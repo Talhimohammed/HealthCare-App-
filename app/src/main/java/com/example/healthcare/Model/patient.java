@@ -20,6 +20,10 @@ public class patient {
         this.birthdaydate = birthdaydate;
     }
 
+    public patient (){
+
+    }
+
     public String getEmail() {
         return email;
     }
