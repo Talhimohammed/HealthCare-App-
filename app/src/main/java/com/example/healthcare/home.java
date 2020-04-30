@@ -29,6 +29,7 @@ public class home extends AppCompatActivity {
     Button profile ;
     CircleImageView profile_image ;
     StorageReference storageReference ;
+    Button medicalfolder ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class home extends AppCompatActivity {
         search  = (Button)findViewById(R.id.search);
         profile =  (Button)findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
+        medicalfolder = (Button)findViewById(R.id.medicalfolder);
 
 
 
@@ -74,12 +76,19 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
 
-                }
+                 }
             });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        medicalfolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(),MedicalFolder.class));
+            }
+        });
 
 
     }
