@@ -32,7 +32,9 @@ public class MedicalFolder extends AppCompatActivity {
         fiche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),FichePatient.class));
+                Intent intent =  new Intent(v.getContext(),FichePatient.class) ;
+                intent.putExtra("test",0);
+                startActivity(intent);
             }
         });
     }

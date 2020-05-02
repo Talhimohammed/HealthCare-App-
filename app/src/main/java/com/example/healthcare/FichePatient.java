@@ -2,6 +2,7 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
@@ -82,9 +83,18 @@ public class FichePatient extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        //start the files activity
-
                         bar.setVisibility(View.GONE);
+
+                         int test = getIntent().getIntExtra("test",0);
+                         if (test == 1) {
+
+                             finish();
+
+                         }else {
+                             startActivity(new Intent(bar.getContext(),Medicalfiles.class));
+
+                         }
+
 
                     }
                 });

@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -30,6 +32,7 @@ public class home extends AppCompatActivity {
     CircleImageView profile_image ;
     StorageReference storageReference ;
     Button medicalfolder ;
+    private FirebaseFirestore db ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class home extends AppCompatActivity {
         profile =  (Button)findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
         medicalfolder = (Button)findViewById(R.id.medicalfolder);
+        db = FirebaseFirestore.getInstance() ;
 
 
 
@@ -86,7 +90,20 @@ public class home extends AppCompatActivity {
         medicalfolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),MedicalFolder.class));
+                db.collection("fiches").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots.size()>0) {
+
+                            startActivity(new Intent(getBaseContext(),Medicalfiles.class));
+
+                        }else {
+                            startActivity(new Intent(getBaseContext(),MedicalFolder.class));
+
+                        }
+                    }
+                });
+
             }
         });
 
