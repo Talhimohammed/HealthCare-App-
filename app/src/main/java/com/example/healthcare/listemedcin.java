@@ -46,6 +46,7 @@ public class listemedcin extends AppCompatActivity {
                      medcins.add(med);
 
                      medcinadapter adapter = new medcinadapter(getBaseContext(),R.layout.medcinadapter,medcins);
+
                      listView.setAdapter(adapter);
 
                  }

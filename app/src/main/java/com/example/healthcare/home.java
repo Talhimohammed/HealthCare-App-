@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -29,6 +31,8 @@ public class home extends AppCompatActivity {
     Button profile ;
     CircleImageView profile_image ;
     StorageReference storageReference ;
+    Button medicalfolder ;
+    private FirebaseFirestore db ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class home extends AppCompatActivity {
         search  = (Button)findViewById(R.id.search);
         profile =  (Button)findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
+        medicalfolder = (Button)findViewById(R.id.medicalfolder);
+        db = FirebaseFirestore.getInstance() ;
 
 
 
@@ -74,12 +80,32 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
 
-                }
+                 }
             });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        medicalfolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.collection("fiches").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots.size()>0) {
+
+                            startActivity(new Intent(getBaseContext(),Medicalfiles.class));
+
+                        }else {
+                            startActivity(new Intent(getBaseContext(),MedicalFolder.class));
+
+                        }
+                    }
+                });
+
+            }
+        });
 
 
     }

@@ -65,7 +65,7 @@
                 android:textColor="@color/colorwithe" />
 
             <Button
-                android:id="@+id/button17"
+                android:id="@+id/medicalfolder"
                 android:layout_width="match_parent"
                 android:layout_height="79dp"
                 android:background="@drawable/rectangle"
