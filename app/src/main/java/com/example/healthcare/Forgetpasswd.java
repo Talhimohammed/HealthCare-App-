@@ -42,7 +42,7 @@ public class Forgetpasswd extends AppCompatActivity {
         Username = Useremail.getText().toString();
 
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth  = FirebaseAuth.getInstance();
 
         Envoi.setOnClickListener(new View.OnClickListener() {
             @Override
