@@ -2,6 +2,7 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextPaint;
@@ -13,11 +14,13 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.example.healthcare.Model.fiche;
+import com.example.healthcare.ui.editclass;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FichePatient extends AppCompatActivity {
 
@@ -31,6 +34,8 @@ public class FichePatient extends AppCompatActivity {
     private EditText size ;
     private ProgressBar bar ;
     private FirebaseFirestore db  ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +73,7 @@ public class FichePatient extends AppCompatActivity {
         });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 String w = weight.getText().toString();
                 String s = surgery.getText().toString() ;
                 String d = disease.getText().toString() ;
@@ -78,7 +83,7 @@ public class FichePatient extends AppCompatActivity {
 
                 bar.setVisibility(View.VISIBLE);
 
-                fiche f = new fiche(w,s,sp,d,si,email);
+                final fiche f = new fiche(w,s,sp,d,si,email);
                 db.collection("fiches").document(id.getText().toString()).set(f).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -89,6 +94,11 @@ public class FichePatient extends AppCompatActivity {
                          if (test == 1) {
 
                              finish();
+
+
+
+
+
 
                          }else {
                              startActivity(new Intent(bar.getContext(),Medicalfiles.class));
@@ -108,4 +118,9 @@ public class FichePatient extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 }
