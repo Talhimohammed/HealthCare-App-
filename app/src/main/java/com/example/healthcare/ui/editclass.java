@@ -106,7 +106,7 @@ public class editclass extends AppCompatDialogFragment {
 
 
         spinner.setAdapter(new ArrayAdapter<String>(spinner.getContext(), android.R.layout.simple_list_item_1,area));
-        spinner.setSelection(position,true);
+        spinner.setSelection(pos,true);
 
 
        weight.setText(s1);

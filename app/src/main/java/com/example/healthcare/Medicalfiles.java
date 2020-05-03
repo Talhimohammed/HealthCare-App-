@@ -81,8 +81,6 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
         });
 
 
-
-
     }
 
     public void setListfiche() {

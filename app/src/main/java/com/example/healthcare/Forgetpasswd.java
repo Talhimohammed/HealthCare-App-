@@ -22,7 +22,7 @@ public class Forgetpasswd extends AppCompatActivity {
     EditText Useremail ;
     Button Envoi ;
     EditText Email;
-    String Username;
+    String mail;
 
 
     FirebaseAuth firebaseAuth;
@@ -39,7 +39,6 @@ public class Forgetpasswd extends AppCompatActivity {
         Useremail = (EditText) findViewById(R.id.UserEmail);
         Envoi = findViewById(R.id.BtnForgetPass);
 
-        Username = Useremail.getText().toString();
 
 
         firebaseAuth  = FirebaseAuth.getInstance();
@@ -48,13 +47,14 @@ public class Forgetpasswd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (Username.isEmpty()) {
-                    SweetAlertDialog dialog = new SweetAlertDialog(Forgetpasswd.this, SweetAlertDialog.WARNING_TYPE);
+                mail = Useremail.getText().toString();
+                if(TextUtils.isEmpty(mail)){
+                    SweetAlertDialog dialog = new SweetAlertDialog(v.getContext(), SweetAlertDialog.WARNING_TYPE);
                     dialog.setTitle("Password reset");
                     dialog.setTitleText("please enter your email");
                     dialog.show();
 
-                } else {
+                }else{
                     firebaseAuth.sendPasswordResetEmail(Useremail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
 
                         @Override

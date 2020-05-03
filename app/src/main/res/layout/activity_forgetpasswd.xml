@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homebg"
+    android:background="@color/hex"
     tools:context=".Forgetpasswd"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     >
@@ -78,7 +78,7 @@
                 android:layout_marginBottom="10dp"
                 android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="10dp"
-                android:hint="Entrer Votre Email"
+                android:hint="Enter your email"
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
 
