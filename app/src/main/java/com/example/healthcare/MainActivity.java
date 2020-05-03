@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
       TextView textView ;
       TextView regis ;
       Button signin ;
+    TextView ForgetPass;
 
 
     @Override
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.ToggleTextView);
         regis = (TextView)findViewById(R.id.register);
         signin = (Button)findViewById(R.id.signin);
+        ForgetPass = (TextView)findViewById(R.id.btnForgetPass);
+
 
         textView.setVisibility(View.GONE);
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -126,7 +129,14 @@ public class MainActivity extends AppCompatActivity {
 
              }
          });
+        ForgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(),Forgetpasswd.class));
 
+
+            }
+        });
 
 
 
