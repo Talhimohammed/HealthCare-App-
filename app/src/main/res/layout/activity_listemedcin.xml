@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="421dp"
+        android:layout_width="match_parent"
         android:layout_height="179dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
@@ -30,5 +30,6 @@
         android:background="@color/hex"
         android:textSize="60dp"
         tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

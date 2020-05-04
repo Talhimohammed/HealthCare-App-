@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,11 +29,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class home extends AppCompatActivity {
 
-    Button search  ;
-    Button profile ;
+    TextView search  ;
+    LinearLayout profile ;
     CircleImageView profile_image ;
     StorageReference storageReference ;
-    Button medicalfolder ;
+    LinearLayout medicalfolder ;
     private FirebaseFirestore db ;
 
     @Override
@@ -39,10 +41,10 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        search  = (Button)findViewById(R.id.search);
-        profile =  (Button)findViewById(R.id.profile);
+        search  = (TextView)findViewById(R.id.search);
+        profile =  (LinearLayout)findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
-        medicalfolder = (Button)findViewById(R.id.medicalfolder);
+        medicalfolder = (LinearLayout)findViewById(R.id.medicalfolder);
         db = FirebaseFirestore.getInstance() ;
 
 
