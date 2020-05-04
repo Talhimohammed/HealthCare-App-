@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.healthcare.Model.medcin;
 import com.example.healthcare.R;
@@ -33,7 +35,7 @@ public class medcinadapter extends ArrayAdapter<medcin> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String name = getItem(position).getFullname();
         String specialite = getItem(position).getSpecialite();
 
@@ -42,6 +44,17 @@ public class medcinadapter extends ArrayAdapter<medcin> {
 
         TextView fullname = (TextView)convertView.findViewById(R.id.nom);
         TextView spe  = (TextView)convertView.findViewById(R.id.specialite) ;
+        Button moreinfo = (Button)convertView.findViewById(R.id.moreinformation);
+
+
+        moreinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doctordialog d = new doctordialog(getItem(position).getEmail().toString(),""+getItem(position).getPhone(),getItem(position).getVille().toString());
+                d.show(((FragmentActivity)v.getContext()).getSupportFragmentManager(),"Information");
+            }
+        });
+
 
         fullname.setText(name);
         spe.setText(specialite);

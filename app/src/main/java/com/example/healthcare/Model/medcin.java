@@ -42,6 +42,10 @@ public class medcin {
         this.phone = phone;
     }
 
+    public int getPhone (){
+        return phone ;
+    }
+
     public String getPassword() {
         return password;
     }
