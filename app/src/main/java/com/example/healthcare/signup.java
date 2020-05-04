@@ -17,7 +17,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -75,7 +74,7 @@ public class signup extends AppCompatActivity {
         doctor = (Button)findViewById(R.id.doctor);
         aryou = (TextView)findViewById(R.id.areyou);
         specialite = (Spinner)findViewById(R.id.spinner);
-        ville = (EditText)findViewById(R.id.ville);
+        ville = (EditText)findViewById(R.id.phonenumber);
         pbar = (ProgressBar)findViewById(R.id.pbar);
 
 

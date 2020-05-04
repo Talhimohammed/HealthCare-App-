@@ -23,11 +23,11 @@
         android:id="@+id/textView3"
         android:layout_width="421dp"
         android:layout_height="179dp"
-        android:fontFamily="sans-serif-medium"
+        android:background="@color/hex"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="DOCTORS"
         android:textColor="@color/colorwithe"
-        android:background="@color/hex"
         android:textSize="60dp"
         tools:layout_editor_absoluteX="-6dp"
         tools:layout_editor_absoluteY="0dp" />

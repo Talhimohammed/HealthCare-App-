@@ -39,10 +39,35 @@
             android:textColor="@color/black"
             android:textSize="40dp" />
 
-        <Button
-            android:id="@+id/button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="87dp" android:background="@drawable/rectangle_4"
-            android:text="More information" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+
+                android:id="@+id/moreinformation"
+                android:layout_width="199dp"
+                android:layout_height="87dp" android:textSize="15dp"
+                android:background="@drawable/rectangle_4"
+                android:text="More information"
+                android:textColor="@color/colorwithe" />
+
+            <Button
+
+                android:id="@+id/bookappoint"
+                android:layout_width="199dp"
+                android:layout_height="87dp"
+                android:textSize="15dp"
+                android:background="@drawable/rectangle_4"
+                android:text="Book appointement"
+                android:textColor="@color/colorwithe" />
+
+        </LinearLayout>
+
+
+
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

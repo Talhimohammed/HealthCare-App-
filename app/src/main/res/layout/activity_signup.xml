@@ -145,7 +145,7 @@
             tools:layout_editor_absoluteY="567dp" />
 
         <EditText
-            android:id="@+id/ville"
+            android:id="@+id/phonenumber"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:ems="10"
