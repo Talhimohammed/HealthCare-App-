@@ -7,15 +7,18 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
@@ -35,6 +38,9 @@ public class home extends AppCompatActivity {
     StorageReference storageReference ;
     LinearLayout medicalfolder ;
     private FirebaseFirestore db ;
+    LinearLayout logt ;
+
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +51,22 @@ public class home extends AppCompatActivity {
         profile =  (LinearLayout)findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
         medicalfolder = (LinearLayout)findViewById(R.id.medicalfolder);
+        logt = (LinearLayout)findViewById(R.id.logout);
         db = FirebaseFirestore.getInstance() ;
+
+
+        logt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.getInstance().signOut();
+                finish();
+              Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
+                 Toast.makeText(getApplicationContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
 
@@ -111,4 +132,6 @@ public class home extends AppCompatActivity {
 
 
     }
+
+
 }
