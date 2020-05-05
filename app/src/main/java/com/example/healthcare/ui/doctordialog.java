@@ -35,6 +35,7 @@ public class doctordialog extends AppCompatDialogFragment {
         this.v=ville  ;
 
     }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
