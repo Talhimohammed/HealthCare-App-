@@ -21,4 +21,12 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="very_severely_underweight">very severely underweight</string>
+    <string name="severely_underweight">severely underweight</string>
+    <string name="underweight">underweight</string>
+    <string name="normal">normal</string>
+    <string name="overweight">overweight</string>
+    <string name="obese_class_i">obese class I</string>
+    <string name="obese_class_ii">obese class II</string>
+    <string name="obese_class_iii">obese class III</string>
 </resources>

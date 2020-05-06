@@ -39,6 +39,7 @@ public class home extends AppCompatActivity {
     LinearLayout medicalfolder ;
     private FirebaseFirestore db ;
     LinearLayout logt ;
+    private  ImageView bmi ;
 
     private FirebaseAuth firebaseAuth;
 
@@ -53,6 +54,14 @@ public class home extends AppCompatActivity {
         medicalfolder = (LinearLayout)findViewById(R.id.medicalfolder);
         logt = (LinearLayout)findViewById(R.id.logout);
         db = FirebaseFirestore.getInstance() ;
+        bmi = (ImageView)findViewById(R.id.bmi);
+
+        bmi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(),BMI.class));
+            }
+        });
 
 
         logt.setOnClickListener(new View.OnClickListener() {
