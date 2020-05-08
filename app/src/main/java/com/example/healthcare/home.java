@@ -1,10 +1,8 @@
 package com.example.healthcare;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -41,6 +39,7 @@ public class home extends AppCompatActivity {
     LinearLayout medicalfolder ;
     private FirebaseFirestore db ;
     LinearLayout logt ;
+    private  ImageView bmi ;
 
     private FirebaseAuth firebaseAuth;
 
@@ -55,41 +54,26 @@ public class home extends AppCompatActivity {
         medicalfolder = (LinearLayout)findViewById(R.id.medicalfolder);
         logt = (LinearLayout)findViewById(R.id.logout);
         db = FirebaseFirestore.getInstance() ;
+        bmi = (ImageView)findViewById(R.id.bmi);
+
+        bmi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(),BMI.class));
+            }
+        });
 
 
         logt.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
-                                        builder.setTitle("Logout");
-
-                                        builder.setMessage("Do you want to logout ?")
-                                                .setCancelable(false)
-                                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
-                                                        firebaseAuth.getInstance().signOut();
-                                                        finish();
-                                                        Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
-                                                        startActivity(intent);
-
-                                                        Toast.makeText(getApplicationContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                })
-                                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
-                                                        dialog.cancel();
-                                                    }
-
-                                                });
-                                        AlertDialog alert = builder.create();
-                                        alert.show();
-
-                                    }
-
-
-
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.getInstance().signOut() ;
+                finish();
+                Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
+            }
         });
-
 
 
 
