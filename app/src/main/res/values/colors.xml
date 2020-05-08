@@ -7,7 +7,8 @@
     <color name="hex">#33AEB6</color>
     <color name="red">#FF0000</color>
     <color name="black">#000000</color>
-
+    <color name="textcardColor">#3f3f3f</color>
+    <color name="cardColor">#ffffff</color>
     <color name="colorPrimary1">#FCFCFC</color>
     <color name="colorPrimaryDark1">#2A2E43</color>
     <color name="colorAccent1">#FF402D</color>
