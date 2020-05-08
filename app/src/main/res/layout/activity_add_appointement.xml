@@ -36,7 +36,6 @@
         android:layout_marginRight="127dp"
         android:gravity="center"
         android:textSize="25dp"
-        android:text="25/27/2018"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datepicker" />
