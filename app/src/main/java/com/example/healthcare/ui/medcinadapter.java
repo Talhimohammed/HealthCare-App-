@@ -1,6 +1,7 @@
 package com.example.healthcare.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.healthcare.AddAppointement;
 import com.example.healthcare.Model.medcin;
 import com.example.healthcare.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -45,6 +48,7 @@ public class medcinadapter extends ArrayAdapter<medcin> {
         TextView fullname = (TextView)convertView.findViewById(R.id.nom);
         TextView spe  = (TextView)convertView.findViewById(R.id.specialite) ;
         Button moreinfo = (Button)convertView.findViewById(R.id.moreinformation);
+        Button appoint = (Button)convertView.findViewById(R.id.bookappoint);
 
 
         moreinfo.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +56,15 @@ public class medcinadapter extends ArrayAdapter<medcin> {
             public void onClick(View v) {
                 doctordialog d = new doctordialog(getItem(position).getEmail().toString(),""+getItem(position).getPhone(),getItem(position).getVille().toString());
                 d.show(((FragmentActivity)v.getContext()).getSupportFragmentManager(),"Information");
+            }
+        });
+
+        appoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent p = new Intent(v.getContext(), AddAppointement.class);
+                p.putExtra("Doc_Ref", getItem(position).getEmail());
+                v.getContext().startActivity(p);
             }
         });
 

@@ -67,15 +67,13 @@ public class home extends AppCompatActivity {
         logt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.getInstance().signOut();
+                firebaseAuth.getInstance().signOut() ;
                 finish();
-              Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-
-                 Toast.makeText(getApplicationContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
 
