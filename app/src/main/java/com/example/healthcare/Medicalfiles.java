@@ -16,6 +16,7 @@ import com.example.healthcare.ui.MedicalFileAdapter;
 import com.example.healthcare.ui.editclass;
 import com.example.healthcare.ui.medcinadapter;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -95,14 +96,17 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
                 if (!queryDocumentSnapshots.isEmpty()) {
                     List<DocumentSnapshot> p = queryDocumentSnapshots.getDocuments();
                     for (DocumentSnapshot d : p) {
+
                         fiche f = d.toObject(fiche.class);
+                        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
 
+                        if ((f.getPostedby()).equals(email)) {
 
-                        HashMap<String, fiche> m = new HashMap<String, fiche>();
-                        m.put(d.getId(), f);
-                        map.add(m);
+                            HashMap<String, fiche> m = new HashMap<String, fiche>();
+                            m.put(d.getId(), f);
+                            map.add(m);
 
-
+                        }
                     }
 
                     MedicalFileAdapter adapter = new MedicalFileAdapter(getBaseContext(), R.layout.medicalfileslist, map);

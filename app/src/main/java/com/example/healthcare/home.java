@@ -117,25 +117,30 @@ public class home extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        medicalfolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db.collection("fiches").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (queryDocumentSnapshots.size()>0) {
 
-                            startActivity(new Intent(getBaseContext(),Medicalfiles.class));
+     medicalfolder.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+             db.collection("fiches").whereEqualTo("postedby",email).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                 @Override
+                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                     if (queryDocumentSnapshots.size()>0) {
 
-                        }else {
-                            startActivity(new Intent(getBaseContext(),MedicalFolder.class));
+                         startActivity(new Intent(getBaseContext(),Medicalfiles.class));
 
-                        }
-                    }
-                });
+                     }else {
 
-            }
-        });
+                         startActivity(new Intent(getBaseContext(),MedicalFolder.class));
+
+                     }
+
+
+                 }
+             });
+         }
+     });
+
 
 
     }
