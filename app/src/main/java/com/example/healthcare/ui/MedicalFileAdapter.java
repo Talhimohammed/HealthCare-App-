@@ -68,11 +68,7 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
 
 
 
-     /*  String weight = getItem(position).getPoid();
-        String surgery = getItem(position).getOperation();
-        String Bgroup = getItem(position).getGroupe_san();
-        String disease = getItem(position).getMaladie();
-        String size = getItem(position).getTaille(); */
+
 
         LayoutInflater inflater =  LayoutInflater.from(mcontext);
         convertView = inflater.inflate(nressource,parent,false);

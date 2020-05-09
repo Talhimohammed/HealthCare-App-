@@ -63,7 +63,8 @@ public class medcinadapter extends ArrayAdapter<medcin> {
             @Override
             public void onClick(View v) {
                 Intent p = new Intent(v.getContext(), AddAppointement.class);
-                p.putExtra("Doc_Ref", getItem(position).getEmail());
+                p.putExtra("Doc_Ref", getItem(position).getEmail())  ;
+                p.putExtra("Doc_Name",getItem(position).getFullname());
                 v.getContext().startActivity(p);
             }
         });

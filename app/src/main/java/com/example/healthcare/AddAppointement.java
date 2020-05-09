@@ -117,7 +117,8 @@ public class AddAppointement extends AppCompatActivity {
         mdatelistener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                date.setText(month+"/"+dayOfMonth+"/"+year);
+                int newmonth = month + 1 ;
+                date.setText(dayOfMonth+"/"+newmonth+"/"+year);
                 confirm.setVisibility(View.GONE);
 
             }
@@ -168,8 +169,9 @@ public class AddAppointement extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                appointement po = new appointement(generatecode(),getIntent().getStringExtra("Doc_Ref"),hoursspinner.getSelectedItem().toString(),date.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
-                db.collection("appointement").document(generatecode()+"").set(po).addOnSuccessListener(new OnSuccessListener<Void>() {
+                int g = generatecode() ;
+                appointement po = new appointement(g,getIntent().getStringExtra("Doc_Ref"),hoursspinner.getSelectedItem().toString(),date.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail().toString(),getIntent().getStringExtra("Doc_Name"));
+                db.collection("appointement").document(g+"").set(po).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         SweetAlertDialog dialog = new SweetAlertDialog(AddAppointement.this, SweetAlertDialog.SUCCESS_TYPE);

@@ -46,6 +46,7 @@ public class home extends AppCompatActivity {
     private  CardView bmi ;
 
 
+
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -57,7 +58,7 @@ public class home extends AppCompatActivity {
         profile =  (CardView) findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
         medicalfolder = (CardView) findViewById(R.id.medicalfolder);
-        appoinement = (CardView)findViewById(R.id.Appoinement);
+        appoinement = (CardView)findViewById(R.id.Appm);
         logt = (CardView)findViewById(R.id.logout);
         db = FirebaseFirestore.getInstance() ;
         bmi = (CardView)findViewById(R.id.bmi);
@@ -176,6 +177,13 @@ public class home extends AppCompatActivity {
              });
          }
      });
+
+        appoinement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(),myappointements.class));
+            }
+        });
 
 
 
