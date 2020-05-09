@@ -1,8 +1,11 @@
 package com.example.healthcare;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,14 +35,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class home extends AppCompatActivity {
 
-    TextView search  ;
-    LinearLayout profile ;
+    private TextView search  ;
+    private CardView profile ;
     CircleImageView profile_image ;
     StorageReference storageReference ;
-    LinearLayout medicalfolder ;
+    private  CardView medicalfolder ;
     private FirebaseFirestore db ;
-    LinearLayout logt ;
-    private  ImageView bmi ;
+    private  CardView appoinement;
+    CardView logt ;
+    private  CardView bmi ;
+
 
     private FirebaseAuth firebaseAuth;
 
@@ -49,12 +54,24 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         search  = (TextView)findViewById(R.id.search);
-        profile =  (LinearLayout)findViewById(R.id.profile);
+        profile =  (CardView) findViewById(R.id.profile);
         profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
-        medicalfolder = (LinearLayout)findViewById(R.id.medicalfolder);
-        logt = (LinearLayout)findViewById(R.id.logout);
+        medicalfolder = (CardView) findViewById(R.id.medicalfolder);
+        appoinement = (CardView)findViewById(R.id.Appoinement);
+        logt = (CardView)findViewById(R.id.logout);
         db = FirebaseFirestore.getInstance() ;
-        bmi = (ImageView)findViewById(R.id.bmi);
+        bmi = (CardView)findViewById(R.id.bmi);
+
+
+
+
+        appoinement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(),AddAppointement.class));
+            }
+        });
+
 
         bmi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +84,30 @@ public class home extends AppCompatActivity {
         logt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.getInstance().signOut() ;
-                finish();
-                Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
+                builder.setTitle("Logout");
+
+                builder.setMessage("Do you want to exit?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                firebaseAuth.getInstance().signOut() ;
+                                finish();
+                                Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
             }
         });
 
