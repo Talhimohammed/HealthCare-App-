@@ -3,7 +3,7 @@ package com.example.healthcare;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.healthcare.Model.medcin;
+import com.example.healthcare.Model.doctors;
 import com.example.healthcare.Model.patient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -144,7 +144,7 @@ public class signup extends AppCompatActivity {
 
                                     if (type_utilisateur.equals("doctor")) {
 
-                                        medcin doctor = new medcin(email.getText().toString(), fullName.getText().toString(), Integer.parseInt(phonenumber.getText().toString()), password.getText().toString(), bday.getText().toString(),ville.getText().toString(),specialite.getSelectedItem().toString());
+                                        doctors doctor = new doctors(email.getText().toString(), fullName.getText().toString(), Integer.parseInt(phonenumber.getText().toString()), password.getText().toString(), bday.getText().toString(),ville.getText().toString(),specialite.getSelectedItem().toString());
                                         FirebaseFirestore.getInstance().collection("doctors").add(doctor).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {

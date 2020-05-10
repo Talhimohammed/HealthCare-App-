@@ -15,33 +15,32 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/ic_bg_topheader"/>
 
-    <ImageView
-        android:id="@+id/user_photo"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/home_profile_doctor"
         android:layout_width="71dp"
         android:layout_height="71dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/avatar"
+        android:src="@drawable/image_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="26dp" />
 
     <TextView
-        android:textSize="20sp"
-        android:text="Dr.Ahmed Abdullah"
-        android:id="@+id/user_name"
-        android:textColor="#ffffff"
-        android:fontFamily="@font/mo_re"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="18dp"
+        android:id="@+id/doctname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/user_photo"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="18dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/mo_re"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/home_profile_doctor"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textSize="16sp"
+        android:textSize="19sp"
         android:text="4101410141"
         android:id="@+id/user_id"
         android:fontFamily="@font/mo_re"
@@ -50,13 +49,13 @@
         android:layout_marginStart="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/user_photo"
-        app:layout_constraintTop_toTopOf="@id/user_name"
+        app:layout_constraintStart_toEndOf="@id/home_profile_doctor"
+        app:layout_constraintTop_toTopOf="@id/doctname"
         android:layout_marginLeft="18dp" />
 
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="418dp"
+        android:layout_height="381dp"
         android:layout_marginTop="110dp"
         android:layout_marginBottom="60dp"
         android:alignmentMode="alignMargins"
@@ -66,10 +65,13 @@
         android:rowCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@id/bg_top_header"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="0.557"
+        app:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:ignore="MissingConstraints">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/my_patient"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -109,6 +111,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/RDV"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -148,6 +151,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/profildoc"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -187,6 +191,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/logouta"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -199,23 +204,24 @@
             app:cardElevation="6dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="121dp"
+                android:layout_height="149dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="87dp"
+                    android:layout_height="82dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_attendance_recap"/>
+                    android:layout_marginLeft="13dp"
+                    android:background="@drawable/exit" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="31dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/mo_re"
                     android:text="Logout"
                     android:textColor="@color/textcardColor"
@@ -225,83 +231,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/cardColor"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_course_book"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/textcardColor"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/mo_re"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/cardColor"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_course_plan"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/textcardColor"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/mo_re"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
     </GridLayout>
 

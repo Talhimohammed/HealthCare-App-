@@ -7,7 +7,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.DownloadManager;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,7 +15,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
@@ -24,14 +22,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.healthcare.Model.medcin;
 import com.example.healthcare.Model.patient;
-import com.example.healthcare.ui.medcinadapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -39,8 +34,6 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.io.Console;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,7 +53,7 @@ public class PatientProfile extends AppCompatActivity {
     private ImageView plusprofile ;
     private ProgressBar bar ;
     private TextView view ;
-    private ImageView delep ;
+    private ImageView delept ;
 
     static int PReqCode = 1 ;
     static int reqcode = 1 ;
@@ -117,7 +110,7 @@ public class PatientProfile extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("Images");
         view = (TextView)findViewById(R.id.textprofile);
         bar = (ProgressBar) findViewById(R.id.progbar);
-        delep = (ImageView)findViewById(R.id.deletepic);
+        delept = (ImageView) findViewById(R.id.deletepic);
 
         FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
@@ -211,7 +204,7 @@ public class PatientProfile extends AppCompatActivity {
 
    //delete profile pic :
 
-        delep.setOnClickListener(new View.OnClickListener() {
+        delept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

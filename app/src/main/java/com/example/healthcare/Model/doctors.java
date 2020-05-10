@@ -1,6 +1,6 @@
 package com.example.healthcare.Model;
 
-public class medcin {
+public class doctors {
     private String email ;
     private String fullname ;
     private int phone ;
@@ -9,7 +9,7 @@ public class medcin {
     private String ville ;
     private String Specialite ;
 
-    public medcin(String email, String fullname, int phone, String password, String birthdaydate, String ville, String specialite) {
+    public doctors(String email, String fullname, int phone, String password, String birthdaydate, String ville, String specialite) {
         this.email = email;
         this.fullname = fullname;
         this.phone = phone;
@@ -18,7 +18,7 @@ public class medcin {
         this.ville = ville;
         Specialite = specialite;
     }
-    public medcin (){
+    public doctors(){
     }
 
     public String getEmail() {
