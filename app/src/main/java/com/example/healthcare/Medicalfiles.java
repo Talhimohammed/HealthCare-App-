@@ -8,13 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.healthcare.Model.fiche;
-import com.example.healthcare.Model.medcin;
 import com.example.healthcare.ui.MedicalFileAdapter;
 import com.example.healthcare.ui.editclass;
-import com.example.healthcare.ui.medcinadapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,9 +21,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Medicalfiles extends AppCompatActivity implements editclass.DialogListener {
 

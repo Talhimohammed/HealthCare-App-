@@ -14,23 +14,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.healthcare.AddAppointement;
-import com.example.healthcare.Model.medcin;
+import com.example.healthcare.Model.doctors;
 import com.example.healthcare.R;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.sql.ResultSet;
 import java.util.List;
 
-import io.opencensus.tags.Tag;
-
-public class medcinadapter extends ArrayAdapter<medcin> {
+public class medcinadapter extends ArrayAdapter<doctors> {
 
     private static final String TAG = "medcinadapter" ;
     private Context mcontext ;
     private int nressource ;
 
 
-    public medcinadapter(@NonNull Context context, int resource, @NonNull List<medcin> objects) {
+    public medcinadapter(@NonNull Context context, int resource, @NonNull List<doctors> objects) {
         super(context, resource, objects);
         mcontext = context ;
         nressource = resource ;

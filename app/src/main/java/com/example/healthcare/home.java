@@ -31,20 +31,20 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class home extends AppCompatActivity {
 
-    private TextView search  ;
-    private CardView profile ;
-    CircleImageView profile_image ;
-    StorageReference storageReference ;
-    private  CardView medicalfolder ;
-    private FirebaseFirestore db ;
-    private  CardView appoinement;
-    CardView logt ;
-    private  CardView bmi ;
-
+    private TextView search;
+    private CardView profile;
+    CircleImageView profile_image;
+    StorageReference storageReference;
+    private CardView medicalfolder;
+    private FirebaseFirestore db;
+    private CardView appoinement;
+    CardView logt;
+    private CardView bmi;
 
 
     private FirebaseAuth firebaseAuth;
@@ -54,22 +54,20 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        search  = (TextView)findViewById(R.id.search);
-        profile =  (CardView) findViewById(R.id.profile);
-        profile_image = (CircleImageView)findViewById(R.id.home_profile_image);
+        search = (TextView) findViewById(R.id.search);
+        profile = (CardView) findViewById(R.id.profile);
+        profile_image = (CircleImageView) findViewById(R.id.home_profile_image);
         medicalfolder = (CardView) findViewById(R.id.medicalfolder);
-        appoinement = (CardView)findViewById(R.id.Appm);
-        logt = (CardView)findViewById(R.id.logout);
-        db = FirebaseFirestore.getInstance() ;
-        bmi = (CardView)findViewById(R.id.bmi);
-
-
+        appoinement = (CardView) findViewById(R.id.Appm);
+        logt = (CardView) findViewById(R.id.logout);
+        db = FirebaseFirestore.getInstance();
+        bmi = (CardView) findViewById(R.id.bmi);
 
 
         appoinement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),AddAppointement.class));
+                startActivity(new Intent(v.getContext(), AddAppointement.class));
             }
         });
 
@@ -77,7 +75,7 @@ public class home extends AppCompatActivity {
         bmi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),BMI.class));
+                startActivity(new Intent(v.getContext(), BMI.class));
             }
         });
 
@@ -85,32 +83,43 @@ public class home extends AppCompatActivity {
         logt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
-                builder.setTitle("Logout");
 
-                builder.setMessage("Do you want to exit?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                firebaseAuth.getInstance().signOut() ;
-                                finish();
-                                Intent  intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
+                final SweetAlertDialog dialog = new SweetAlertDialog(home.this, SweetAlertDialog.WARNING_TYPE);
+                dialog.setTitle("Profile picture");
+                dialog.setTitleText("Do you really want to delete your profile picture");
 
+                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        firebaseAuth.getInstance().signOut();
+                        finish();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+
+                dialog.setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                        dialog.dismiss();
+
+                    }
+                });
+
+                dialog.show();
 
 
             }
+
+
         });
+
+
+
 
 
 
