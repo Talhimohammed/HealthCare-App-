@@ -78,6 +78,7 @@ public class map extends FragmentActivity {
 
                             try {
                                 addresslist = a.getFromLocationName(adr,1);
+                                Toast.makeText(getBaseContext(),addresslist.size()+"",Toast.LENGTH_SHORT).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
