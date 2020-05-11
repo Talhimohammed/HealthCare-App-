@@ -67,7 +67,7 @@ public class home extends AppCompatActivity {
         appoinement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), AddAppointement.class));
+                startActivity(new Intent(v.getContext(), myappointements.class));
             }
         });
 
@@ -85,8 +85,8 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
 
                 final SweetAlertDialog dialog = new SweetAlertDialog(home.this, SweetAlertDialog.WARNING_TYPE);
-                dialog.setTitle("Profile picture");
-                dialog.setTitleText("Do you really want to delete your profile picture");
+                dialog.setTitle("Logout");
+                dialog.setTitleText("Do you really want to logout ? ");
 
                 dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
