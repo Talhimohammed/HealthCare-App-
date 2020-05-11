@@ -10,8 +10,9 @@
 
 
     </string-array>
+    A
 
-
+    <string name="map_key" translatable="false">AIzaSyBJ_nCoZmC21y79MeDqeyuk8SxOwLcyq5s</string>
     <string name="title_activity_createaccount">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

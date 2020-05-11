@@ -65,7 +65,6 @@ public class medcinadapter extends ArrayAdapter<doctors> {
             }
         });
 
-
         fullname.setText(name);
         spe.setText(specialite);
 

@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.healthcare.R;
-
+import com.example.healthcare.map;
 
 
 public class doctordialog extends AppCompatDialogFragment {
@@ -75,6 +75,17 @@ public class doctordialog extends AppCompatDialogFragment {
 
 
 
+
+            }
+        });
+
+        ville.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), map.class);
+                intent.putExtra("Adress",ville.getText().toString());
+                startActivity(intent);
 
             }
         });
