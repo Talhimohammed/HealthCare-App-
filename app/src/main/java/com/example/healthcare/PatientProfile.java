@@ -129,7 +129,7 @@ public class PatientProfile extends AppCompatActivity {
                           email.setText(pa.getEmail());
                            fullname.setText(pa.getFullname());
                            password.setText(pa.getPassword());
-                           phone.setText(""+pa.getPhone());
+                           phone.setText("+212"+pa.getPhone());
 
 
 

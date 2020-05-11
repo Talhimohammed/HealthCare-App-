@@ -40,9 +40,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
         android:textSize="19sp"
-        android:text="4101410141"
-        android:id="@+id/user_id"
+        android:text=""
+        android:id="@+id/specialitedoct"
         android:fontFamily="@font/mo_re"
         android:textColor="#ffffff"
         android:layout_marginTop="32dp"

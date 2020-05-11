@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class DocProfile extends AppCompatActivity {
     String EmailDoc ;
     private ImageView delep ;
     private ImageView plusprofile ;
+    Button backhome;
     Uri pickedpic;
     private TextView adressedoc ;
     static int PReqCode = 1 ;
@@ -97,10 +99,20 @@ public class DocProfile extends AppCompatActivity {
         adressedoc = (TextView)findViewById(R.id.address_doc);
         specialite = (TextView) findViewById(R.id.specialite_doc);
         delep = (ImageView)findViewById(R.id.deletepicdoc);
+        backhome = findViewById(R.id.back_homedoc);
 
         FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
         EmailDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+
+
+        backhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), homedoctor.class));
+            }
+        });
 
 
         db.collection("doctors").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
