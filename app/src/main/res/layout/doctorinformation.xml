@@ -36,8 +36,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="363dp"
-        android:layout_height="298dp"
+        android:layout_width="350dp"
+        android:layout_height="325dp"
         android:layout_marginTop="33dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
@@ -49,21 +49,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:text="Email"
-                android:textSize="20dp" />
-
-            <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:gravity="center"
+                android:layout_height="58dp"
+                android:drawableLeft="@drawable/image_19"
                 android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="20dp" />
 
             <TextView
@@ -71,33 +63,41 @@
                 android:layout_height="47dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:text="Phone number"
                 android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:gravity="center"
+                android:layout_height="58dp"
+                android:drawableLeft="@drawable/image_20"
                 android:fontFamily="sans-serif"
+                android:gravity="center"
+
+                android:textColor="@color/black"
                 android:textSize="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:fontFamily="sans-serif"
-                android:text="Ville"
-                android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/ville"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:drawableLeft="@drawable/image_22"
+                android:fontFamily="sans-serif"
                 android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:fontFamily="sans-serif"
+                android:gravity="center"
                 android:textSize="20dp" />
         </LinearLayout>
     </LinearLayout>
@@ -108,13 +108,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="125dp"
         android:layout_marginLeft="125dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="125dp"
         android:layout_marginRight="125dp"
+        android:layout_marginBottom="39dp"
         android:background="@drawable/rectangle_15"
         android:text="BACK"
         android:textColor="@color/colorwithe"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />

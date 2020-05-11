@@ -46,7 +46,7 @@ public class medcinadapter extends ArrayAdapter<doctors> {
         Button moreinfo = (Button)convertView.findViewById(R.id.moreinformation);
         Button appoint = (Button)convertView.findViewById(R.id.bookappoint);
 
-
+       //
         moreinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +64,6 @@ public class medcinadapter extends ArrayAdapter<doctors> {
                 v.getContext().startActivity(p);
             }
         });
-
 
         fullname.setText(name);
         spe.setText(specialite);
