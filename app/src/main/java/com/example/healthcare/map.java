@@ -8,13 +8,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -69,23 +67,23 @@ public class map extends FragmentActivity {
 
                           //  LatLng latlng = new LatLng(location.getLatitude(),location.getLongitude());
                           //  LatLng d = new LatLng(location.getLatitude(),location.getLongitude());
-                         //  LatLng d = new LatLng(19.169257,73.341601);
+                          //  LatLng d = new LatLng(19.169257,73.341601);
 
-                       //     String adr = "Casablan ca" ;
+                         //     String adr = "Casablan ca" ;
                             String adr = getIntent().getStringExtra("Adress");
                             List<Address> addresslist = null ;
                             Geocoder a = new Geocoder(map.this);
 
                             try {
                                 addresslist = a.getFromLocationName(adr,1);
-                                Toast.makeText(getBaseContext(),addresslist.size()+"",Toast.LENGTH_SHORT).show();
+
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
 
                             Address adresse = addresslist.get(0);
                             LatLng d = new LatLng(adresse.getLatitude(),adresse.getLongitude());
-
                             MarkerOptions options = new MarkerOptions().position(d).title("i am there");
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(d,10));
                             googleMap.addMarker(options);

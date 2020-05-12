@@ -14,9 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -26,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
       TextView textView ;
       TextView regis ;
       Button signin ;
-    TextView ForgetPass;
+      TextView ForgetPass;
+      private FirebaseFirestore db ;
+
 
 
     @Override
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         regis = (TextView)findViewById(R.id.register);
         signin = (Button)findViewById(R.id.signin);
         ForgetPass = (TextView)findViewById(R.id.btnForgetPass);
+        db = FirebaseFirestore.getInstance();
 
 
         textView.setVisibility(View.GONE);
@@ -97,14 +103,16 @@ public class MainActivity extends AppCompatActivity {
          firebaseAuth = FirebaseAuth.getInstance();
          signin.setOnClickListener(new View.OnClickListener() {
              @Override
-             public void onClick(View v) {
+             public void onClick(final View v) {
                  firebaseAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                      @Override
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if(task.isSuccessful()) {
                              if (firebaseAuth.getCurrentUser().isEmailVerified()) {
 
-                                startActivity(new Intent(getBaseContext(),homedoctor.class));
+                                   tohome(email.getText().toString());
+
+
 
                              }else {
 
@@ -147,6 +155,37 @@ public class MainActivity extends AppCompatActivity {
      public void toSignUp(){
         Intent intent = new Intent(this,signup.class);
         startActivity(intent);
+    }
+
+    public void tohome(String em){
+
+
+
+        db.collection("doctors").whereEqualTo("email",em).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (queryDocumentSnapshots.size()>0) {
+                    startActivity(new Intent(getBaseContext(),homedoctor.class));
+
+                }
+
+
+            }
+        });
+
+        db.collection("patient").whereEqualTo("email",em).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (queryDocumentSnapshots.size()>0) {
+                    startActivity(new Intent(getBaseContext(),home.class));
+
+                }
+
+
+            }
+        });
+
+
     }
 
 
