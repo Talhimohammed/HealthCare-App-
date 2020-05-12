@@ -44,17 +44,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PatientProfile extends AppCompatActivity {
 
-    private CircleImageView profile_image ;
+    private ImageView profile_image ;
     private TextView email  ;
     private TextView fullname ;
     private TextView password ;
     private TextView phone ;
     String EmailPatient ;
     private ImageView plusprofile ;
+    private TextView birthdy;
     private ProgressBar bar ;
     private TextView view ;
     private ImageView delept ;
-
+    private ImageView backhome;
     static int PReqCode = 1 ;
     static int reqcode = 1 ;
 
@@ -106,11 +107,22 @@ public class PatientProfile extends AppCompatActivity {
         password = (TextView)findViewById(R.id.Password);
         phone = (TextView)findViewById(R.id.phone);
         plusprofile = (ImageView)findViewById(R.id.plusprofile);
-        profile_image = (CircleImageView)findViewById(R.id.profile_image);
+        profile_image = (ImageView)findViewById(R.id.profile_image);
         storageReference = FirebaseStorage.getInstance().getReference("Images");
-        view = (TextView)findViewById(R.id.textprofile);
-        bar = (ProgressBar) findViewById(R.id.progbar);
+        backhome =findViewById(R.id.backhomepat);
         delept = (ImageView) findViewById(R.id.deletepic);
+        birthdy = findViewById(R.id.birthday);
+
+
+
+
+        backhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), home.class));
+            }
+        });
+
 
         FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
@@ -130,6 +142,8 @@ public class PatientProfile extends AppCompatActivity {
                            fullname.setText(pa.getFullname());
                            password.setText(pa.getPassword());
                            phone.setText("+212"+pa.getPhone());
+                           birthdy.setText(pa.getBirthdaydate());
+
 
 
 

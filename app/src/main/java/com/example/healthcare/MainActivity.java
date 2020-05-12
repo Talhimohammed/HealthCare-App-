@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                          if(task.isSuccessful()) {
                              if (firebaseAuth.getCurrentUser().isEmailVerified()) {
 
-                                startActivity(new Intent(getBaseContext(),homedoctor.class));
+                                startActivity(new Intent(getBaseContext(),home.class));
 
                              }else {
 

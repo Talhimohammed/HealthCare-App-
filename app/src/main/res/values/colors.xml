@@ -15,6 +15,8 @@
     <color name="bottomNavigationTextColor">#B2B2B2</color>
     <color name="bottomNavigationTintColor">#B2B2B2</color>
     <color name="bottomNavigationSelectedColor">#FC4926</color>
+    <color name="blue">#293859</color>
+    <color name="lightgrey">#EEEEEE</color>
     <color name="statusBarColor">#000</color>
     <color name="whiteBodyColor">#FCFCFC</color>
     <color name="darkTextColor">#020000</color>
@@ -33,6 +35,10 @@
     <color name="followersBg">#65DCE5</color>
     <color name="followingBg">#49BEFF</color>
     <color name="grey">#E5E5E5</color>
+    <color name="white1">#ffffff</color>
+    <color name="grey1">#E9EAEE</color>
+    <color name="yellow">#F8BA0F</color>
+    <color name="goodgrey">#535353</color>
 
     <color name="white">#FFFFFF</color>
 
