@@ -110,9 +110,7 @@ public class MainActivity extends AppCompatActivity {
                          if(task.isSuccessful()) {
                              if (firebaseAuth.getCurrentUser().isEmailVerified()) {
 
-                                   tohome(email.getText().toString());
-
-
+                                   tohomebytype(email.getText().toString());
 
                              }else {
 
@@ -157,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void tohome(String em){
+    public void tohomebytype(String em){
 
 
 
