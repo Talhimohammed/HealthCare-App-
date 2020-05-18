@@ -126,7 +126,7 @@ public class DocProfile extends AppCompatActivity {
                         if (md.getEmail().equals(EmailDoc)) {
                             emaildoc.setText(md.getEmail());
                             password.setText(md.getPassword());
-                            phone.setText("+212"+md.getPhone());
+                            phone.setText("(+212)"+md.getPhone());
                             specialite.setText(md.getSpecialite());
                             fullname.setText("Dr."+md.getFullname());
                             adressedoc.setText(md.getVille());

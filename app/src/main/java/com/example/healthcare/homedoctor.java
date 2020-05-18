@@ -24,6 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class homedoctor extends AppCompatActivity {
     StorageReference storageReference ;
-    CircleImageView profile_image ;
+    CircularImageView profile_image ;
     private FirebaseFirestore db1;
     String EmailDoct ;
     TextView fullname1;
@@ -102,7 +103,7 @@ public class homedoctor extends AppCompatActivity {
                     rdv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), AddAppointement.class));
+
 
 
             }
@@ -205,7 +206,7 @@ public class homedoctor extends AppCompatActivity {
                 try {
                     localFile = File.createTempFile("images", "jpg");
 
-                    profile_image = (CircleImageView) findViewById(R.id.home_profile_doctor);
+                    profile_image = (CircularImageView ) findViewById(R.id.home_profile_doctor);
 
                     storageReference.getFile(localFile)
                             .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {

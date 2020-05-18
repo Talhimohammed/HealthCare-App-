@@ -27,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class home extends AppCompatActivity {
 
     private TextView search;
     private CardView profile;
-    CircleImageView profile_image;
+    private CircularImageView profile_image;
     StorageReference storageReference;
     private CardView medicalfolder;
     private FirebaseFirestore db;
@@ -56,7 +57,7 @@ public class home extends AppCompatActivity {
 
         search = (TextView) findViewById(R.id.search);
         profile = (CardView) findViewById(R.id.profile);
-        profile_image = (CircleImageView) findViewById(R.id.home_profile_image);
+        profile_image = (CircularImageView) findViewById(R.id.home_profile_image);
         medicalfolder = (CardView) findViewById(R.id.medicalfolder);
         appoinement = (CardView) findViewById(R.id.Appm);
         logt = (CardView) findViewById(R.id.logout);

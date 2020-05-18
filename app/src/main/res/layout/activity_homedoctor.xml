@@ -15,13 +15,12 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/ic_bg_topheader"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/home_profile_doctor"
         android:layout_width="71dp"
         android:layout_height="71dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/image_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="26dp" />
@@ -136,7 +135,7 @@
                     android:layout_width="100dp"
                     android:layout_height="84dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/medical" />
+                    android:background="@drawable/date" />
 
                 <TextView
                     android:layout_width="wrap_content"

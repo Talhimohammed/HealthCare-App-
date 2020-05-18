@@ -52,7 +52,7 @@ public class AppointAdapter extends ArrayAdapter<appointement> {
 
         TextView d = (TextView)convertView.findViewById(R.id.date);
         final TextView fn = (TextView)convertView.findViewById(R.id.fullname);
-        TextView e = (TextView)convertView.findViewById(R.id.email);
+       // TextView e = (TextView)convertView.findViewById(R.id.email);
         TextView h = (TextView)convertView.findViewById(R.id.hour);
         Button cancel = (Button)convertView.findViewById(R.id.cancel);
 
@@ -92,9 +92,9 @@ public class AppointAdapter extends ArrayAdapter<appointement> {
 
 
 
-        fn.setText(name_doc);
+        fn.setText("Dr."+name_doc);
         d.setText(date);
-        e.setText(email);
+        //e.setText(email);
         h.setText(hour);
 
         return  convertView ;

@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/almendra_bold</item>
+        <item>@font/architects_daughter</item>
         <item>@font/candal</item>
         <item>@font/days_one</item>
         <item>@font/oxygen</item>
