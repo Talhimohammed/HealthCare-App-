@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
 import com.example.healthcare.DirectionHelpers.FetchURL;
 import com.example.healthcare.DirectionHelpers.TaskLoadedCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -127,7 +126,8 @@ public class map extends AppCompatActivity implements OnMapReadyCallback, TaskLo
         // this following key in the url is disabled change the for your enbaled key .
         String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=AIzaSyAmvIm6ob3atr22G2-jKtwWOSDSVO99G_g";
 
-        return url;
+        return url ;
+
     }
 
     @Override
