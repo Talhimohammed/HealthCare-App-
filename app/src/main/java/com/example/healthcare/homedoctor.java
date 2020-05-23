@@ -201,7 +201,7 @@ public class homedoctor extends AppCompatActivity {
 
 
 
-                storageReference = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
+                storageReference = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getEmail() + ".jpg");
                 final File localFile;
                 try {
                     localFile = File.createTempFile("images", "jpg");

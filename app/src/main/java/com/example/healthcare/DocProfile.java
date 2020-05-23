@@ -168,7 +168,7 @@ public class DocProfile extends AppCompatActivity {
 
         //retrieve profile image from firebase  :
 
-        storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+        storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getEmail()+".jpg");
 
 
         final File localFile;
@@ -206,7 +206,7 @@ public class DocProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-              storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+              storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getEmail()+".jpg");
 
 
 

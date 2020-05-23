@@ -36,7 +36,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="375dp"
+        android:layout_width="390dp"
         android:layout_height="324dp"
         android:layout_marginTop="33dp"
         android:orientation="horizontal"
