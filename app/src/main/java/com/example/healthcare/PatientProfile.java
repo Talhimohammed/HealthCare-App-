@@ -40,7 +40,6 @@ import java.io.IOException;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PatientProfile extends AppCompatActivity {
 
@@ -107,7 +106,7 @@ public class PatientProfile extends AppCompatActivity {
         password = (TextView)findViewById(R.id.Password);
         phone = (TextView)findViewById(R.id.phone);
         plusprofile = (ImageView)findViewById(R.id.plusprofile);
-        profile_image = (ImageView)findViewById(R.id.profile_image);
+        profile_image = (ImageView)findViewById(R.id.profile_image_patient);
         storageReference = FirebaseStorage.getInstance().getReference("Images");
         backhome =findViewById(R.id.backhomepat);
         delept = (ImageView) findViewById(R.id.deletepic);
@@ -184,7 +183,7 @@ public class PatientProfile extends AppCompatActivity {
 
    //retrieve profile image from firebase  :
 
-        storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+        storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getEmail()+".jpg");
 
 
         final File localFile;
@@ -222,7 +221,7 @@ public class PatientProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+                storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getEmail()+".jpg");
 
 
 
@@ -312,7 +311,7 @@ public class PatientProfile extends AppCompatActivity {
 
     public void imageUploader(){
 
-         StorageReference ref = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+         StorageReference ref = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getEmail()+".jpg");
             ref.putFile(pickedpic)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

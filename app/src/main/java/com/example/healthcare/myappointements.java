@@ -3,10 +3,7 @@ package com.example.healthcare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.media.Image;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +42,7 @@ public class myappointements extends AppCompatActivity {
         setContentView(R.layout.activity_myappointements);
         appointements = (ListView)findViewById(R.id.myapp);
         search = (Button)findViewById(R.id.search);
-        date = (EditText)findViewById(R.id.date);
+        date = (EditText)findViewById(R.id.date_sent_request);
         refr = (ImageView)findViewById(R.id.refresh);
         finish = (ImageView)findViewById(R.id.finish);
         db = FirebaseFirestore.getInstance();

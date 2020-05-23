@@ -50,7 +50,7 @@ public class AppointAdapter extends ArrayAdapter<appointement> {
         convertView = inflater.inflate(nresource,parent,false);
         db = FirebaseFirestore.getInstance();
 
-        TextView d = (TextView)convertView.findViewById(R.id.date);
+        TextView d = (TextView)convertView.findViewById(R.id.date_sent_request);
         final TextView fn = (TextView)convertView.findViewById(R.id.fullname);
        // TextView e = (TextView)convertView.findViewById(R.id.email);
         TextView h = (TextView)convertView.findViewById(R.id.hour);

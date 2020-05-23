@@ -138,7 +138,7 @@ public class home extends AppCompatActivity {
             }
         });
 
-        storageReference = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+   /*     storageReference = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
         final File localFile;
         try {
             localFile = File.createTempFile("images", "jpg");
@@ -162,7 +162,9 @@ public class home extends AppCompatActivity {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } */
+
+
 
 
      medicalfolder.setOnClickListener(new View.OnClickListener() {

@@ -102,7 +102,7 @@
                         android:src="@drawable/can"></ImageView>
 
                     <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/profile_image"
+                        android:id="@+id/profile_image_patient"
                         android:layout_width="162dp"
                         android:layout_height="121dp"
                         android:layout_gravity="center"

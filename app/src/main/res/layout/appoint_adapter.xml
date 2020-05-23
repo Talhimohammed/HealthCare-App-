@@ -34,7 +34,7 @@
 
                 android:drawableLeft="@drawable/calendars"
                 android:drawablePadding="10dp"
-                android:id="@+id/date"
+                android:id="@+id/date_sent_request"
 
 
                 style="@style/viewParent.headerText.HomeCardTitle"
@@ -49,7 +49,7 @@
                 android:id="@+id/fullname"
                 style="@style/viewParent.headerText.homeCardContent"
                 android:textSize="17dp"
-                android:layout_below="@id/date"
+                android:layout_below="@id/date_sent_request"
                  />
 
             <TextView
