@@ -91,7 +91,6 @@ public class medcinadapter extends ArrayAdapter<doctors> {
                 dialog.show();
             }
         });
-
         CHECK_IF_THE_REQUEST_WAS_ALREADY_SENT(sendR,getItem(position).getEmail(),FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
        //
@@ -134,7 +133,6 @@ public class medcinadapter extends ArrayAdapter<doctors> {
                 Toast.makeText(getContext(),"Your request has been sent successfully to the doctor",Toast.LENGTH_LONG).show();
             }
         });
-
 
     }
     public int generatecode(){

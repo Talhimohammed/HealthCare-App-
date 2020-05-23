@@ -73,9 +73,6 @@ public class doctordialog extends AppCompatDialogFragment {
 
 
 
-
-
-
             }
         });
 
@@ -105,4 +102,6 @@ public class doctordialog extends AppCompatDialogFragment {
         return  builder.create();
 
     }
+
+
 }

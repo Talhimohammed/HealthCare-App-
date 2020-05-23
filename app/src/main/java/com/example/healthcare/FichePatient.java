@@ -95,11 +95,6 @@ public class FichePatient extends AppCompatActivity {
 
                              finish();
 
-
-
-
-
-
                          }else {
                              startActivity(new Intent(bar.getContext(),Medicalfiles.class));
 

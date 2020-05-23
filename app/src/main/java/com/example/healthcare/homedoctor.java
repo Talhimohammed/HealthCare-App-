@@ -45,6 +45,7 @@ public class homedoctor extends AppCompatActivity {
     CardView rdv ;
     String mailDoc ;
     TextView specialitee;
+    Button request_patient ;
 
     private FirebaseAuth firebaseAuth;
 
@@ -55,7 +56,7 @@ public class homedoctor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homedoctor);
 
-
+        request_patient = (Button)findViewById(R.id.patient_request_button);
         db1 = FirebaseFirestore.getInstance();
         EmailDoct = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         fullname1=findViewById(R.id.doctname);
@@ -67,6 +68,14 @@ public class homedoctor extends AppCompatActivity {
         FirebaseFirestore db2  = FirebaseFirestore.getInstance();
         mailDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
+
+        request_patient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(),PatientRequest.class));
+
+            }
+        });
 
 
 
