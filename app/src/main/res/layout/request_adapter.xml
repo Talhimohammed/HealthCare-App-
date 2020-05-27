@@ -80,7 +80,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/refuse"
                     android:layout_width="197dp"
                     android:layout_height="70dp"
                     android:background="@color/red"
@@ -90,7 +90,7 @@
                     android:textSize="20dp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/accept"
                     android:layout_width="224dp"
                     android:layout_height="70dp"
                     android:background="@color/green"
