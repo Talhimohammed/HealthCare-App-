@@ -7,6 +7,20 @@ public class appointement {
      private String date     ;
      private String postedby ;
      private String doctor_name ;
+     private String etat ;
+
+    public appointement (){}
+
+    public appointement(int app_code, String doctor_ref, String hour, String date, String postedby , String doctor_name , String etat) {
+        this.app_code = app_code;
+        this.doctor_ref = doctor_ref;
+        this.hour = hour;
+        this.date = date;
+        this.postedby = postedby;
+        this.doctor_name = doctor_name ;
+        this.etat = etat ;
+    }
+
 
     public void setApp_code(int app_code) {
         this.app_code = app_code;
@@ -36,16 +50,9 @@ public class appointement {
         this.postedby = postedby;
     }
 
-    public appointement (){}
+    public String getEtat() { return etat; }
 
-    public appointement(int app_code, String doctor_ref, String hour, String date, String postedby , String doctor_name) {
-        this.app_code = app_code;
-        this.doctor_ref = doctor_ref;
-        this.hour = hour;
-        this.date = date;
-        this.postedby = postedby;
-        this.doctor_name = doctor_name ;
-    }
+    public void setEtat(String etat) { this.etat = etat; }
 
     public int getApp_code() {
         return app_code;

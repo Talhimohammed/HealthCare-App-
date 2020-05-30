@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="380dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -16,15 +16,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="15dp"
-        android:layout_marginLeft="11dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         app:cardCornerRadius="15dp"
         app:cardPreventCornerOverlap="true">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/home_gradient_maths"
             android:minHeight="100dp"
@@ -32,40 +32,48 @@
 
             <TextView
 
-                android:drawableLeft="@drawable/calendars"
-                android:drawablePadding="10dp"
                 android:id="@+id/date_sent_request"
-
-
                 style="@style/viewParent.headerText.HomeCardTitle"
+                android:drawableLeft="@drawable/calendars"
 
-                android:fontFamily="@font/berkshire_swash"
-                 />
+
+                android:drawablePadding="10dp"
+
+                android:fontFamily="@font/berkshire_swash" />
 
             <TextView
 
-                android:drawableLeft="@drawable/medical"
-                android:drawablePadding="10dp"
                 android:id="@+id/fullname"
                 style="@style/viewParent.headerText.homeCardContent"
-                android:textSize="17dp"
                 android:layout_below="@id/date_sent_request"
-                 />
+                android:drawableLeft="@drawable/medical"
+                android:drawablePadding="10dp"
+                android:textSize="17dp" />
 
             <TextView
-                android:drawablePadding="10dp"
-
-             android:drawableLeft="@drawable/hour"
-                android:textSize="17dp"
                 android:id="@+id/hour"
+
                 style="@style/viewParent.headerText.homeCardContent1"
                 android:layout_below="@id/fullname"
-             />
+                android:drawableLeft="@drawable/hour"
+                android:drawablePadding="10dp"
+                android:textSize="17dp" />
+
+            <ImageView
+                android:id="@+id/dd"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:maxHeight="90dp"
+                android:src="@drawable/image_24"
+                android:visibility="invisible" />
 
             <ImageView
                 style="@style/homeCardImage"
                 android:maxHeight="90dp"
-                android:src="@drawable/date" />
+                android:src="@drawable/date"
+                android:visibility="visible" />
+
 
             <Button
                 android:id="@+id/cancel"
@@ -76,7 +84,11 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/buttonstyle"
                 android:text="cancel" />
+
+
+
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -163,7 +163,6 @@ public class PatientRequest extends AppCompatActivity {
         });
 
     }
-
     void updateData(ArrayList list, final String value) {
 
         // Get a new write batch

@@ -215,7 +215,6 @@ public class Request_Doctor_Adapter extends ArrayAdapter<HashMap<String, DPR>> {
 
             storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(email_patient+".jpg");
 
-
             final File localFile;
             try {
                 localFile = File.createTempFile("images", "jpg");
@@ -262,11 +261,8 @@ public class Request_Doctor_Adapter extends ArrayAdapter<HashMap<String, DPR>> {
 
                         }
 
-
                     });
 
         }
-
-
 
 }

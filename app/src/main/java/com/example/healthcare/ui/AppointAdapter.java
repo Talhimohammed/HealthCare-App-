@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +16,9 @@ import androidx.annotation.Nullable;
 import com.example.healthcare.Model.appointement;
 import com.example.healthcare.R;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
@@ -52,10 +55,22 @@ public class AppointAdapter extends ArrayAdapter<appointement> {
 
         TextView d = (TextView)convertView.findViewById(R.id.date_sent_request);
         final TextView fn = (TextView)convertView.findViewById(R.id.fullname);
-       // TextView e = (TextView)convertView.findViewById(R.id.email);
         TextView h = (TextView)convertView.findViewById(R.id.hour);
         Button cancel = (Button)convertView.findViewById(R.id.cancel);
+        final ImageView etat = (ImageView)convertView.findViewById(R.id.dd);
 
+        //checking if the appointment is already confirmed by the doctor:
+        db.collection("appointement").whereEqualTo("app_code",getItem(position).getApp_code()).whereEqualTo("etat","Confirmed")
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                 List<DocumentSnapshot> d = queryDocumentSnapshots.getDocuments();
+
+                 if (d.size()>0) {
+                          etat.setVisibility(View.VISIBLE);
+                                 }
+            }
+        });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

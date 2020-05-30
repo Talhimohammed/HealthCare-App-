@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class homedoctor extends AppCompatActivity {
     String mailDoc ;
     TextView specialitee;
     Button request_patient ;
+    ImageView appoint ;
 
     private FirebaseAuth firebaseAuth;
 
@@ -67,17 +69,24 @@ public class homedoctor extends AppCompatActivity {
         specialitee = findViewById(R.id.specialitedoct);
         FirebaseFirestore db2  = FirebaseFirestore.getInstance();
         mailDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        appoint = (ImageView)findViewById(R.id.appoint);
 
 
         request_patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(),PatientRequest.class));
-
             }
         });
 
 
+         appoint.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(getBaseContext(),Appointments.class));
+
+             }
+         });
 
 
 

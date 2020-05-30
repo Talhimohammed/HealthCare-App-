@@ -56,7 +56,7 @@ public class AddAppointement extends AppCompatActivity {
         check = (Button)findViewById(R.id.check);
         confirm = (Button)findViewById(R.id.confirm);
         db =FirebaseFirestore.getInstance();
-        appoint = db.collection("Appointements");
+        appoint = db.collection("Appointements_adapter");
         back = (Button)findViewById(R.id.back);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -170,13 +170,13 @@ public class AddAppointement extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 int g = generatecode() ;
-                appointement po = new appointement(g,getIntent().getStringExtra("Doc_Ref"),hoursspinner.getSelectedItem().toString(),date.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail().toString(),getIntent().getStringExtra("Doc_Name"));
+                appointement po = new appointement(g,getIntent().getStringExtra("Doc_Ref"),hoursspinner.getSelectedItem().toString(),date.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail().toString(),getIntent().getStringExtra("Doc_Name"),"Not Confirmed");
                 db.collection("appointement").document(g+"").set(po).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         SweetAlertDialog dialog = new SweetAlertDialog(AddAppointement.this, SweetAlertDialog.SUCCESS_TYPE);
                         dialog.setTitle("Success ! ");
-                        dialog.setTitleText("doctor appointment booking has been registered successfully");dialog.show();
+                        dialog.setTitleText("doctor appointment booking has been registered successfully , Please wait your doctor to confirm your appointement ");dialog.show();
                     }
                 });
             }

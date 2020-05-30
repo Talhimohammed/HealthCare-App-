@@ -3,17 +3,21 @@ package com.example.healthcare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.healthcare.Model.appointement;
-import com.example.healthcare.ui.AppointAdapter;
+import com.example.healthcare.ui.Appointements_adapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,49 +28,51 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class myappointements extends AppCompatActivity {
-
-    private ListView appointements ;
-    private List<appointement> Alist ;
-    private FirebaseFirestore db ;
-    private Button search ;
+public class Appointments extends AppCompatActivity {
     private EditText date ;
     private  DatePickerDialog.OnDateSetListener mdatelistener ;
-    private ImageView refr ;
-    private ImageView finish ;
-    AppointAdapter adapter ;
+    private ListView appointements ;
+    private Button back ;
+    private FirebaseFirestore db ;
+    private List<appointement> app ;
+    private Button search ;
+    private ImageView refresh ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myappointements);
-        appointements = (ListView)findViewById(R.id.myapp);
-        search = (Button)findViewById(R.id.search);
-        date = (EditText)findViewById(R.id.date_sent_request);
-        refr = (ImageView)findViewById(R.id.refresh);
-        finish = (ImageView)findViewById(R.id.finish);
+        setContentView(R.layout.activity_appointments);
         db = FirebaseFirestore.getInstance();
-        Alist = new ArrayList<>();
+        date = (EditText)findViewById(R.id.date_sent_request);
+        back = (Button)findViewById(R.id.back);
+        appointements = (ListView)findViewById(R.id.appointments_listview);
+        search = (Button)findViewById(R.id.search2);
+        refresh = (ImageView)findViewById(R.id.refresh);
+        app = new ArrayList<>();
 
 
-        finish.setOnClickListener(new View.OnClickListener() {
+        setAllappointments();
+
+        refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-            }
-        });
-
-        refr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setmyappointements();
+                setAllappointments();
                 appointements.invalidateViews();
                 date.setText(null);
+                Toast.makeText(v.getContext(),"Refreshing ....",Toast.LENGTH_SHORT).show();
             }
         });
 
 
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String d= date.getText().toString();
+                searchbydate(d);
 
+            }
+        });
 
         date.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -81,7 +87,7 @@ public class myappointements extends AppCompatActivity {
                     int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
-                    DatePickerDialog dialog = new DatePickerDialog(myappointements.this, mdatelistener, year, month, day);
+                    DatePickerDialog dialog = new DatePickerDialog(Appointments.this, mdatelistener, year, month, day);
 
                     dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
 
@@ -98,60 +104,41 @@ public class myappointements extends AppCompatActivity {
                 int mn = month + 1 ;
                 date.setText(dayOfMonth+"/"+mn+"/"+year);
 
-
             }
         };
 
-        setmyappointements();
-
-
-        search.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String d= date.getText().toString();
-                searchbydate(d);
-
+                finish();
             }
         });
 
+    }
 
+    public void setAllappointments(){
 
+        app.clear();
+        String email_doc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        db.collection("appointement").whereEqualTo("doctor_ref",email_doc).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot d : list) {
+                                appointement a = d.toObject(appointement.class);
+                                app.add(a);
+                        }
 
+                        Appointements_adapter adapter = new Appointements_adapter(getBaseContext(),R.layout.appointments_adapter,app);
+                        appointements.setAdapter(adapter);
+
+                    }
+                });
      }
 
-     public void setmyappointements(){
-        Alist.clear();
-         String email_user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
-         db.collection("appointement").whereEqualTo("postedby",email_user).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-             @Override
-             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                 List<DocumentSnapshot> p = queryDocumentSnapshots.getDocuments();
-                 for (DocumentSnapshot d : p) {
-
-                     appointement a = d.toObject(appointement.class);
-                     Alist.add(a);
-
-
-
-                 }
-                  adapter = new  AppointAdapter(getBaseContext(),R.layout.appoint_adapter,Alist);
-                 appointements.setAdapter(adapter);
-
-
-
-
-             }
-         });
-
-
-     }
-
-
-
-     public void searchbydate(String date){
-        Alist.clear();
+    public void searchbydate(String date){
+        app.clear();
         db.collection("appointement").whereEqualTo("date",date).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -160,7 +147,7 @@ public class myappointements extends AppCompatActivity {
                 for (DocumentSnapshot d : p) {
 
                     appointement a = d.toObject(appointement.class);
-                    Alist.add(a);
+                    app.add(a);
 
                 }
 
@@ -169,10 +156,7 @@ public class myappointements extends AppCompatActivity {
 
             }
         });
-     }
-
-
-
+    }
 
 
 
