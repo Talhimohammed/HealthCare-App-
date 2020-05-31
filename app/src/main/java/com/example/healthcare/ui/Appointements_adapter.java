@@ -1,6 +1,8 @@
 package com.example.healthcare.ui;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,6 +132,17 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
                                         notifyDataSetChanged();
                                         send_cancelation_email(patient_email,doctor_name);
                                         dialog.dismiss();
+
+                                        if(object.size() == 0) {
+                                            //Refreshing the activity without animation
+                                            Intent intent = ((Activity)ncontext).getIntent();
+                                            ((Activity)ncontext).overridePendingTransition(0, 0);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                            ((Activity)ncontext).finish();
+                                            ((Activity)ncontext).overridePendingTransition(0, 0);
+                                            ((Activity)ncontext).startActivity(intent);
+
+                                        }
 
                                         Toast.makeText(ncontext,"Appointment has been deleted successfully ",Toast.LENGTH_SHORT).show();
 

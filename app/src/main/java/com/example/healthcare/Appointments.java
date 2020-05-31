@@ -37,6 +37,7 @@ public class Appointments extends AppCompatActivity {
     private List<appointement> app ;
     private Button search ;
     private ImageView refresh ;
+    private ImageView EMPTY ;
 
 
     @Override
@@ -49,15 +50,16 @@ public class Appointments extends AppCompatActivity {
         appointements = (ListView)findViewById(R.id.appointments_listview);
         search = (Button)findViewById(R.id.search2);
         refresh = (ImageView)findViewById(R.id.refresh);
+        EMPTY = (ImageView)findViewById(R.id.emptylist);
         app = new ArrayList<>();
 
 
-        setAllappointments();
+        setAllappointments(this);
 
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAllappointments();
+                setAllappointments(v.getContext());
                 appointements.invalidateViews();
                 date.setText(null);
                 Toast.makeText(v.getContext(),"Refreshing ....",Toast.LENGTH_SHORT).show();
@@ -116,7 +118,7 @@ public class Appointments extends AppCompatActivity {
 
     }
 
-    public void setAllappointments(){
+    public void setAllappointments(final Context context){
 
         app.clear();
         String email_doc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -124,15 +126,20 @@ public class Appointments extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                        for (DocumentSnapshot d : list) {
+                        if(!queryDocumentSnapshots.isEmpty()) {
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                            for (DocumentSnapshot d : list) {
                                 appointement a = d.toObject(appointement.class);
                                 app.add(a);
+                            }
+
+                            Appointements_adapter adapter = new Appointements_adapter(context, R.layout.appointments_adapter, app);
+                            appointements.setAdapter(adapter);
+                        }else {
+                                  appointements.setVisibility(View.GONE);
+                                  EMPTY.setVisibility(View.VISIBLE);
+
                         }
-
-                        Appointements_adapter adapter = new Appointements_adapter(getBaseContext(),R.layout.appointments_adapter,app);
-                        appointements.setAdapter(adapter);
-
                     }
                 });
      }
