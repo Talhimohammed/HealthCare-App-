@@ -157,7 +157,6 @@ public class Appointments extends AppCompatActivity {
                     app.add(a);
 
                 }
-
                 appointements.invalidateViews();
 
 

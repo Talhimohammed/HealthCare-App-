@@ -1,8 +1,6 @@
 package com.example.healthcare.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,22 +11,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
-import com.example.healthcare.Medicalfiles;
 import com.example.healthcare.Model.fiche;
 import com.example.healthcare.R;
-import com.example.healthcare.signup;
-import com.google.android.gms.dynamic.SupportFragmentWrapper;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -64,6 +55,7 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
         final String Bgroup = getItem(position).get(id).getGroupe_san();
         final String disease = getItem(position).get(id).getMaladie();
         final String size = getItem(position).get(id).getTaille();
+        final String postedby = getItem(position).get(id).getPostedby();
 
 
 
@@ -78,7 +70,7 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
         TextView b = (TextView)convertView.findViewById(R.id.blood);
         TextView d = (TextView)convertView.findViewById(R.id.disease);
         TextView si = (TextView)convertView.findViewById(R.id.size);
-        final TextView i = (TextView)convertView.findViewById(R.id.id);
+        final TextView p = (TextView)convertView.findViewById(R.id.pb);
 
         final Button edit = (Button)convertView.findViewById(R.id.edit);
         final Button delete = (Button)convertView.findViewById(R.id.delete);
@@ -88,11 +80,10 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
         b.setText(Bgroup);
         d.setText(disease);
         si.setText(size);
-        i.setText(id);
+        p.setText(postedby);
 
-
-        final String finalId = id;
-        delete.setOnClickListener(new View.OnClickListener() {
+               final String finalId = id;
+               delete.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
 
@@ -118,30 +109,25 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
                                Toast.makeText(mcontext,"File has been deleted successfully ",Toast.LENGTH_SHORT).show();
                            }
                        });
-
                    }
                });
 
-               dialog.show();
-
+              dialog.show();
 
            }
        });
-        edit.setOnClickListener(new View.OnClickListener() {
+
+               edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                editclass e = new editclass(weight,surgery,Bgroup,disease,size,i.getText().toString(),hashMap,v,position);
-
+                editclass e = new editclass(weight,surgery,Bgroup,disease,size,finalId,hashMap,v,position);
                 e.show(((FragmentActivity)v.getContext()).getSupportFragmentManager(),"dialog");
 
             }
         });
 
-
         return  convertView ;
-
-
     }
 
 

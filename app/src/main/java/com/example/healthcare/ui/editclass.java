@@ -51,6 +51,7 @@ public class editclass extends AppCompatDialogFragment {
 
 
 
+
     public editclass(String s1,String s2 , String s3 , String s4 , String s5 , String id ,List<HashMap<String, fiche>> itemlist , View v , int position){
         this.s1 = s1 ;
         this.s2 = s2 ;
@@ -127,9 +128,10 @@ public class editclass extends AppCompatDialogFragment {
                 String si = size.getText().toString();
                 String sp = spinner.getSelectedItem().toString() ;
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                String uid =   FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-               final fiche a = new fiche(w,s,sp,d,si,email);
-                firestore.collection("fiches").document(id).set(a).addOnSuccessListener(new OnSuccessListener<Void>() {
+               final fiche a = new fiche(w,s,sp,d,si,email,uid);
+              firestore.collection("fiches").document(id).set(a).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
 
@@ -145,6 +147,8 @@ public class editclass extends AppCompatDialogFragment {
 
                     }
                 });
+
+
 
 
             }

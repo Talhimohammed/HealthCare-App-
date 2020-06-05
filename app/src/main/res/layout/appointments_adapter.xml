@@ -114,7 +114,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/Pk"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:gravity="center"

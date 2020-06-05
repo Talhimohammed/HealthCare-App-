@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="408dp"
+        android:layout_width="395dp"
         android:layout_height="346dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
@@ -22,16 +22,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="207dp"
+            android:layout_width="145dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
                 android:gravity="center"
-                android:text="ID"
+                android:text="Posted by "
                 android:textSize="20dp" />
 
             <TextView
@@ -81,11 +80,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/id"
+                android:id="@+id/pb"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
                 android:gravity="center"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/weight"

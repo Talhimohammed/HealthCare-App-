@@ -88,6 +88,12 @@ public class homedoctor extends AppCompatActivity {
              }
          });
 
+         mypt.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(getBaseContext(),MyPatient.class));
+             }
+         });
 
 
         db2.collection("doctors").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

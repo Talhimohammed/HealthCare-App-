@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Appointments"></activity>
+        <activity android:name=".contact_email"></activity>
+        <activity android:name=".MyPatient" />
+        <activity android:name=".Appointments" />
         <activity android:name=".PatientRequest" />
 
         <meta-data
