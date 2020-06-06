@@ -78,12 +78,6 @@ public class contact_email extends AppCompatActivity {
                         });
 
 
-
-
-
-
-
-
             }
         });
 

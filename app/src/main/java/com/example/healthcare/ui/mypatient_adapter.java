@@ -66,11 +66,10 @@ public class mypatient_adapter extends ArrayAdapter<DPR> {
         opendialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contactDialog d = new contactDialog(email_patient,FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                contactDialog d = new contactDialog(email_patient,FirebaseAuth.getInstance().getCurrentUser().getEmail(),v.getContext());
                 d.show(((FragmentActivity)ncontext).getSupportFragmentManager(),"CONTACT");
             }
         });
-
 
         set_fullname_by_email(n,email_patient);
         set_profile_pic(email_patient,profile);
