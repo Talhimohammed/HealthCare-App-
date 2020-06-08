@@ -94,8 +94,6 @@ public class home extends AppCompatActivity {
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         firebaseAuth.getInstance().signOut();
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
 
 

@@ -7,6 +7,23 @@
     android:background="@color/white"
     tools:context=".MyPatient">
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="383dp"
+        android:gravity="center"
+        android:layout_height="57dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
+        android:fontFamily="@font/days_one"
+        android:text="My Patients "
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/back"
         android:layout_width="161dp"
