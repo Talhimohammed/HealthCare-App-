@@ -1,6 +1,8 @@
 package com.example.healthcare.ui;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.healthcare.Medical_Folder_Of_My_Patient;
 import com.example.healthcare.Model.DPR;
 import com.example.healthcare.Model.patient;
 import com.example.healthcare.R;
@@ -62,6 +65,18 @@ public class mypatient_adapter extends ArrayAdapter<DPR> {
         TextView n = (TextView)convertView.findViewById(R.id.fullname);
         ImageView profile = (ImageView)convertView.findViewById(R.id.profile_p);
         final Button opendialog = (Button)convertView.findViewById(R.id.opendialog);
+        final Button medicalfolder = (Button)convertView.findViewById(R.id.cmf);
+
+        medicalfolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), Medical_Folder_Of_My_Patient.class);
+                intent.putExtra("patient_email",email_patient);
+                v.getContext().startActivity(intent);
+
+            }
+        });
 
         opendialog.setOnClickListener(new View.OnClickListener() {
             @Override

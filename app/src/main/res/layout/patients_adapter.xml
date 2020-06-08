@@ -107,7 +107,7 @@
 
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/cmf"
                     android:layout_width="171dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

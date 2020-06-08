@@ -1,5 +1,4 @@
 package com.example.healthcare.ui;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.healthcare.Model.fiche;
 import com.example.healthcare.R;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -29,13 +29,15 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
     private Context mcontext ;
     private int nressource ;
     private  List<HashMap<String,fiche>> hashMap ;
+    private String patient_email ;
 
 
-    public MedicalFileAdapter(@NonNull Context context, int resource, @NonNull List<HashMap<String,fiche>>objects) {
+    public MedicalFileAdapter(@NonNull Context context, int resource, @NonNull List<HashMap<String,fiche>>objects , String patient_email) {
         super(context, resource, objects);
         this.mcontext = context;
         this.nressource = resource ;
         this.hashMap = objects ;
+        this.patient_email = patient_email ;
     }
 
     @NonNull
@@ -50,17 +52,12 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
             id = key ;
         }
 
-        final String weight = getItem(position).get(id).getPoid() ;
+        final String weight  = getItem(position).get(id).getPoid() ;
         final String surgery = getItem(position).get(id).getOperation();
-        final String Bgroup = getItem(position).get(id).getGroupe_san();
+        final String Bgroup  = getItem(position).get(id).getGroupe_san();
         final String disease = getItem(position).get(id).getMaladie();
-        final String size = getItem(position).get(id).getTaille();
+        final String size    = getItem(position).get(id).getTaille();
         final String postedby = getItem(position).get(id).getPostedby();
-
-
-
-
-
 
         LayoutInflater inflater =  LayoutInflater.from(mcontext);
         convertView = inflater.inflate(nressource,parent,false);
@@ -81,6 +78,20 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
         d.setText(disease);
         si.setText(size);
         p.setText(postedby);
+
+        if (patient_email.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
+             edit.setVisibility(View.VISIBLE);
+             delete.setVisibility(View.VISIBLE);
+        }else {
+                if (postedby.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
+                    edit.setVisibility(View.VISIBLE);
+                    delete.setVisibility(View.VISIBLE);
+                }else {
+                    edit.setVisibility(View.GONE);
+                    delete.setVisibility(View.GONE);
+
+                }
+        }
 
                final String finalId = id;
                delete.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +132,11 @@ public class MedicalFileAdapter  extends ArrayAdapter<HashMap<String,fiche>> {
             @Override
             public void onClick(View v) {
 
-                editclass e = new editclass(weight,surgery,Bgroup,disease,size,finalId,hashMap,v,position);
-                e.show(((FragmentActivity)v.getContext()).getSupportFragmentManager(),"dialog");
+
+               editclass e = new editclass(weight,surgery,Bgroup,disease,size,finalId,hashMap,v,position,patient_email);
+
+               e.show(((FragmentActivity)v.getContext()).getSupportFragmentManager(),"dialog");
+
 
             }
         });

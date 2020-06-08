@@ -91,9 +91,9 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
                     for (DocumentSnapshot d : p) {
 
                         fiche f = d.toObject(fiche.class);
-                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-                       if ((f.getPatient_uid()).equals(uid)) {
+                       if ((f.getPatient_email()).equals(email)) {
 
                             HashMap<String, fiche> m = new HashMap<String, fiche>();
                             m.put(d.getId(), f);
@@ -101,8 +101,8 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
 
                         }
                     }
-
-                    MedicalFileAdapter adapter = new MedicalFileAdapter(getBaseContext(), R.layout.medicalfileslist, map);
+                    String email_patient = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    MedicalFileAdapter adapter = new MedicalFileAdapter(getBaseContext(), R.layout.medicalfileslist,map,email_patient);
                     view.setAdapter(adapter);
 
 
