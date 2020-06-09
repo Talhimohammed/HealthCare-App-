@@ -82,7 +82,6 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
         map = new ArrayList<>();
         map.clear();
 
-
         firestore.collection("fiches").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -92,9 +91,9 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
                     for (DocumentSnapshot d : p) {
 
                         fiche f = d.toObject(fiche.class);
-                        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+                        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-                        if ((f.getPostedby()).equals(email)) {
+                       if ((f.getPatient_email()).equals(email)) {
 
                             HashMap<String, fiche> m = new HashMap<String, fiche>();
                             m.put(d.getId(), f);
@@ -102,8 +101,8 @@ public class Medicalfiles extends AppCompatActivity implements editclass.DialogL
 
                         }
                     }
-
-                    MedicalFileAdapter adapter = new MedicalFileAdapter(getBaseContext(), R.layout.medicalfileslist, map);
+                    String email_patient = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    MedicalFileAdapter adapter = new MedicalFileAdapter(getBaseContext(), R.layout.medicalfileslist,map,email_patient);
                     view.setAdapter(adapter);
 
 

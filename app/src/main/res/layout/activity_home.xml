@@ -43,7 +43,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_weight="40"
                 android:fontFamily="@font/days_one"
-                android:text="Welcome"
+                android:text="WELCOME"
                 android:textColor="@color/colorPrimary1"
                 android:textSize="30sp">
 

@@ -2,10 +2,8 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextPaint;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,20 +12,18 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.example.healthcare.Model.fiche;
-import com.example.healthcare.ui.editclass;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Random;
 
 public class FichePatient extends AppCompatActivity {
 
     private Spinner spinner ;
     private Button back ;
     private Button save ;
-    private EditText id ;
     private EditText weight ;
     private EditText surgery ;
     private EditText disease ;
@@ -44,7 +40,7 @@ public class FichePatient extends AppCompatActivity {
         spinner = (Spinner)findViewById(R.id.blood);
         back = (Button)findViewById(R.id.back);
         save = (Button)findViewById(R.id.save);
-        id = (EditText)findViewById(R.id.id);
+
         weight = (EditText)findViewById(R.id.weight);
         surgery = (EditText)findViewById(R.id.surgery);
         disease = (EditText)findViewById(R.id.disease);
@@ -82,9 +78,8 @@ public class FichePatient extends AppCompatActivity {
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
                 bar.setVisibility(View.VISIBLE);
-
-                final fiche f = new fiche(w,s,sp,d,si,email);
-                db.collection("fiches").document(id.getText().toString()).set(f).addOnSuccessListener(new OnSuccessListener<Void>() {
+                final fiche f = new fiche(w,s,sp,d,si,email,email);
+                db.collection("fiches").document().set(f).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
 
@@ -96,10 +91,10 @@ public class FichePatient extends AppCompatActivity {
                              finish();
 
                          }else {
+
                              startActivity(new Intent(bar.getContext(),Medicalfiles.class));
 
-                         }
-
+                               }
 
                     }
                 });
@@ -112,6 +107,11 @@ public class FichePatient extends AppCompatActivity {
 
 
 
+    }
+    public String generatecode(){
+        Random rnd = new Random();
+        int n = 100000 + rnd.nextInt(900000);
+        return n+"" ;
     }
 
 

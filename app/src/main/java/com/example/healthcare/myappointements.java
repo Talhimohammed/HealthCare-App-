@@ -88,7 +88,7 @@ public class myappointements extends AppCompatActivity {
                     dialog.show();
                 }
 
-                return false;
+                return true;
             }
         });
 

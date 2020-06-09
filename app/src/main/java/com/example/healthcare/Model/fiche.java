@@ -8,18 +8,18 @@ public class fiche {
     private String maladie ;
     private String taille ;
     private String postedby ;
+    private String patient_email;
 
-    public fiche(){
+    public fiche(){ }
 
-    }
-
-    public fiche(String poid, String operation, String groupe_san, String maladie, String taille, String postedby) {
+    public fiche(String poid, String operation, String groupe_san, String maladie, String taille, String postedby ,String patient_email) {
         this.poid = poid;
         this.operation = operation;
         this.groupe_san = groupe_san;
         this.maladie = maladie;
         this.taille = taille;
         this.postedby = postedby;
+        this.setPatient_email(patient_email);
     }
 
     public void setPoid(String poid) {
@@ -46,6 +46,8 @@ public class fiche {
         this.postedby = postedby;
     }
 
+    public void setPatient_email(String patient_email) { this.patient_email = patient_email;}
+
 
 
     public String getPoid() {
@@ -71,4 +73,8 @@ public class fiche {
     public String getPostedby() {
         return postedby;
     }
+
+    public String getPatient_email() { return patient_email; }
+
+
 }

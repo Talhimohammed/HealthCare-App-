@@ -94,8 +94,6 @@ public class home extends AppCompatActivity {
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         firebaseAuth.getInstance().signOut();
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
 
 
@@ -171,7 +169,7 @@ public class home extends AppCompatActivity {
          @Override
          public void onClick(View v) {
              String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-             db.collection("fiches").whereEqualTo("postedby",email).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+             db.collection("fiches").whereEqualTo("patient_email",email).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                  @Override
                  public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                      if (queryDocumentSnapshots.size()>0) {

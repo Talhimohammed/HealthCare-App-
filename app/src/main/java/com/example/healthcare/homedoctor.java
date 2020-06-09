@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,8 @@ public class homedoctor extends AppCompatActivity {
     CardView rdv ;
     String mailDoc ;
     TextView specialitee;
-    CardView request_patient ;
+    Button request_patient ;
+    ImageView appoint ;
 
     private FirebaseAuth firebaseAuth;
 
@@ -56,7 +58,7 @@ public class homedoctor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homedoctor);
 
-        request_patient = (CardView)findViewById(R.id.patient_request_button);
+        request_patient = (Button)findViewById(R.id.patient_request_button);
         db1 = FirebaseFirestore.getInstance();
         EmailDoct = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         fullname1=findViewById(R.id.doctname);
@@ -67,18 +69,31 @@ public class homedoctor extends AppCompatActivity {
         specialitee = findViewById(R.id.specialitedoct);
         FirebaseFirestore db2  = FirebaseFirestore.getInstance();
         mailDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        appoint = (ImageView)findViewById(R.id.appoint);
 
 
         request_patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(),PatientRequest.class));
-
             }
         });
 
 
+         appoint.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(getBaseContext(),Appointments.class));
 
+             }
+         });
+
+         mypt.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(getBaseContext(),MyPatient.class));
+             }
+         });
 
 
         db2.collection("doctors").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -140,8 +155,6 @@ public class homedoctor extends AppCompatActivity {
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         firebaseAuth.getInstance().signOut();
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
 
 
@@ -210,7 +223,7 @@ public class homedoctor extends AppCompatActivity {
 
 
 
-                storageReference = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getEmail() + ".jpg");
+                storageReference = FirebaseStorage.getInstance().getReference("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
                 final File localFile;
                 try {
                     localFile = File.createTempFile("images", "jpg");
