@@ -52,6 +52,7 @@
     <color name="bottomNavigationBackground">#F7F7F7</color>
     <color name="miniTitleColor">#6F6A6A</color>
     <color name="colorAccentLight">#6ab7ff</color>
+    <color name="imageBorderColor">#13D3B4</color>
 
 
 

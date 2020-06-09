@@ -296,7 +296,7 @@ public class DocProfile extends AppCompatActivity {
 
     public void imageUploader(){
 
-        StorageReference ref = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+        StorageReference ref = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getEmail()+".jpg");
         ref.putFile(pickedpic)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

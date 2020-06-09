@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/listmedcinview"
-        android:layout_width="403dp"
-        android:layout_height="543dp"
+        android:layout_width="409dp"
+        android:layout_height="613dp"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
         android:layout_marginEnd="5dp"
@@ -19,17 +19,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="179dp"
-        android:background="@color/hex"
-        android:fontFamily="sans-serif-black"
+    <LinearLayout
+        android:layout_width="440dp"
+        android:layout_height="101dp"
+        android:background="@drawable/ic_bg_topheader"
         android:gravity="center"
-        android:text="DOCTORS"
-        android:textColor="@color/colorwithe"
-        android:textSize="60dp"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp">
+
+        <RelativeLayout
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="16dp">
+
+            <TextView
+                android:id="@+id/textViewUser"
+                style="@style/viewParent.headerText"
+                android:layout_width="198dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/gorditas_bold"
+                android:maxLines="2"
+                android:text="DOCTORS"
+                android:textColor="#FFF"
+                android:textSize="35dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/searchdoctor"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+
+                app:civ_border_color="@color/imageBorderColor"
+                app:civ_border_width="2dp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/searchdoctor"
+                android:src="@drawable/ic_search" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

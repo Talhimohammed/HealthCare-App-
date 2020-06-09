@@ -50,18 +50,15 @@
 
             </TextView>
 
-
-
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/home_profile_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="60"
-                android:src="@drawable/image_2"
-                android:layout_marginLeft="28dp"
-                >
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="190dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/image_2" />
 
-            </com.mikhaellopez.circularimageview.CircularImageView>
+
         </LinearLayout>
 
 

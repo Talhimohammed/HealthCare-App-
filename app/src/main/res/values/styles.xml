@@ -8,7 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
 
 
+
     </style>
+
     <style name="viewParent.headerText.contentText">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/miniTitleColor</item>
