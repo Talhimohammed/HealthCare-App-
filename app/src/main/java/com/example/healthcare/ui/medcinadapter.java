@@ -20,6 +20,7 @@ import com.example.healthcare.Model.doctors;
 import com.example.healthcare.R;
 import com.example.healthcare.signup;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -59,7 +60,7 @@ public class medcinadapter extends ArrayAdapter<doctors> {
         TextView spe  = (TextView)convertView.findViewById(R.id.specialite) ;
         Button moreinfo = (Button)convertView.findViewById(R.id.moreinformation);
         Button appoint = (Button)convertView.findViewById(R.id.bookappoint);
-        Button sendR = (Button)convertView.findViewById(R.id.SendButton);
+        Button sendR = (Button) convertView.findViewById(R.id.SendButton);
 
 
 
