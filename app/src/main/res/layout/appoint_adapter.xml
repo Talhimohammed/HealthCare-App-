@@ -77,8 +77,8 @@
 
             <Button
                 android:id="@+id/cancel"
-                android:layout_width="120dp"
-                android:layout_height="45dp"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="133dp"
                 android:layout_marginBottom="10dp"

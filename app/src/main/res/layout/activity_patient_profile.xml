@@ -151,7 +151,7 @@
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:padding="13dp"
-                    android:text="Patient Info"
+                    android:text="Personal information"
                     android:textAllCaps="true"
                     android:textColor="@color/blue"
                     android:textSize="14sp"
