@@ -21,7 +21,9 @@ import com.example.healthcare.MailAPI.MailAPI;
 import com.example.healthcare.Model.appointement;
 import com.example.healthcare.R;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
@@ -52,15 +54,26 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
 
         LayoutInflater inflater =  LayoutInflater.from(ncontext);
         convertView = inflater.inflate(nressource,parent,false);
-
         TextView d = (TextView)convertView.findViewById(R.id.date);
         TextView hour = (TextView)convertView.findViewById(R.id.hour);
         final Button confirm = (Button)convertView.findViewById(R.id.confirm);
         final Button cancel = (Button)convertView.findViewById(R.id.cancel);
         final ImageView c = (ImageView)convertView.findViewById(R.id.confirmed);
 
+        db = FirebaseFirestore.getInstance() ;
 
+        //checking if the appointment is already confirmed by the doctor:
+        db.collection("appointement").whereEqualTo("app_code",getItem(position).getApp_code()).whereEqualTo("etat","Confirmed")
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> d = queryDocumentSnapshots.getDocuments();
 
+                if (d.size()>0) {
+                    c.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         hour.setText(Hour);
         d.setText(date);

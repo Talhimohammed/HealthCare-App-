@@ -2,11 +2,14 @@ package com.example.healthcare.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +22,18 @@ import com.example.healthcare.Model.DPR;
 import com.example.healthcare.Model.doctors;
 import com.example.healthcare.R;
 import com.example.healthcare.signup;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,6 +48,7 @@ public class medcinadapter extends ArrayAdapter<doctors> {
     private Context mcontext ;
     private int nressource ;
     private FirebaseFirestore firestore ;
+    private StorageReference storageReference1 ;
 
 
     public medcinadapter(@NonNull Context context, int resource, @NonNull List<doctors> objects) {
@@ -52,6 +62,7 @@ public class medcinadapter extends ArrayAdapter<doctors> {
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String name = getItem(position).getFullname();
         String specialite = getItem(position).getSpecialite();
+        final String email = getItem(position).getEmail();
 
         LayoutInflater inflater =  LayoutInflater.from(mcontext);
         convertView = inflater.inflate(nressource,parent,false);
@@ -61,6 +72,12 @@ public class medcinadapter extends ArrayAdapter<doctors> {
         Button moreinfo = (Button)convertView.findViewById(R.id.moreinformation);
         Button appoint = (Button)convertView.findViewById(R.id.bookappoint);
         Button sendR = (Button) convertView.findViewById(R.id.SendButton);
+        final  ImageView profilepic = (ImageView)convertView.findViewById(R.id.picdoctor);
+
+        //retrieve the pic from the database storage
+
+        set_profile_pic(email,profilepic);
+
 
 
 
@@ -118,6 +135,35 @@ public class medcinadapter extends ArrayAdapter<doctors> {
 
         return convertView ;
 
+    }
+
+    private void set_profile_pic(String email, final ImageView profilepic) {
+        storageReference1 = FirebaseStorage.getInstance().getReference("Images").child(email+".jpg");
+
+        final File localFile;
+        try {
+            localFile = File.createTempFile("images", "jpg");
+
+
+            storageReference1.getFile(localFile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                            Bitmap myBitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            profilepic.setImageBitmap(myBitmap);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+
+                }
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public  void addDPR(String email_doctor , String email_patient ){
