@@ -109,7 +109,7 @@ public class home extends AppCompatActivity {
                     }
                 });
 
-                dialog.show();
+               // dialog.show();
 
 
             }
