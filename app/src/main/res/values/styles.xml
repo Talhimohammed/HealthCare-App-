@@ -15,6 +15,9 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/miniTitleColor</item>
     </style>
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+    <item name="colorControlNormal">@color/colorWhite3</item>
+    </style>
 
     <style name="viewParent.headerText">
         <item name="android:textColor">@color/contentTextColor</item>

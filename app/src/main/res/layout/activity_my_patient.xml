@@ -31,7 +31,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="27dp"
-        android:background="@drawable/rectangle_15"
+        android:background="@drawable/bgbutton"
         android:text="BACK"
         android:textColor="@color/colorwithe"
         android:textSize="20dp"

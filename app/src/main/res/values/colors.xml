@@ -53,6 +53,11 @@
     <color name="miniTitleColor">#6F6A6A</color>
     <color name="colorAccentLight">#6ab7ff</color>
     <color name="imageBorderColor">#13D3B4</color>
+    <color name="colorPurple">#983CFF</color>
+    <color name="colorPurpleT">#64983cff</color>
+    <color name="colorWhite3">#ffffff</color>
+    <color name="colorBlue">#2FB4FF</color>
+    <color name="colorBlueT">#642fb4ff</color>
 
 
 

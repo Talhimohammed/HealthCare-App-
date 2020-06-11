@@ -47,6 +47,8 @@ public class signup extends AppCompatActivity {
     private Button patient ;
     private Button doctor ;
     private TextView aryou ;
+    private TextView spetia;
+    private TextView villa;
     private String type_utilisateur ;
     private Spinner specialite ;
     private EditText ville ;
@@ -68,6 +70,8 @@ public class signup extends AppCompatActivity {
         phonenumber = (EditText)findViewById(R.id.phoneinput);
         password = (EditText)findViewById(R.id.passwordinput);
         email = (EditText)findViewById(R.id.emailinput);
+        spetia= (TextView)findViewById(R.id.specialit1);
+        villa=(TextView)findViewById(R.id.ville1);
         layoutinfo = (LinearLayout)findViewById(R.id.infolayout);
         btn = (Button)findViewById(R.id.send);
         patient = (Button)findViewById(R.id.patient);
@@ -266,6 +270,8 @@ public class signup extends AppCompatActivity {
                     doctor.setVisibility(View.GONE);
                     patient.setVisibility(View.GONE);
                     aryou.setVisibility(View.GONE);
+                    villa.setVisibility(View.GONE);
+                    spetia.setVisibility(View.GONE);
 
           }
       });

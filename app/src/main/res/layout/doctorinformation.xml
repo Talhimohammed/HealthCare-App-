@@ -1,128 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#FFF">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="341dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="15dp"
+        android:id="@+id/cardView"
+        style="@style/CardView.Light"
+        android:layout_width="391dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/doctor_information" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="138dp"
-        android:layout_marginLeft="138dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginRight="139dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/image_11" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="390dp"
-        android:layout_height="324dp"
-        android:layout_marginTop="33dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
-            android:layout_width="363dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="386dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:paddingBottom="12dp">
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:drawableLeft="@drawable/image_19"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="250dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/doctor_information"
+                app:layout_constraintBottom_toBottomOf="parent"
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:textSize="20dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/phonenumber"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:drawableLeft="@drawable/image_20"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
 
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expandableView"
+                android:layout_width="367dp"
+                android:layout_height="245dp"
+                android:layout_marginTop="12dp"
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:textSize="20dp" />
+                android:paddingBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintStart_toStartOf="parent"
 
-            <TextView
-                android:id="@+id/ville"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:drawableLeft="@drawable/image_22"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.969">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:textSize="20dp" />
-        </LinearLayout>
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/phoneIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/ic_phone_black_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/baack"
-        android:layout_width="161dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="125dp"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginRight="125dp"
-        android:layout_marginBottom="39dp"
-        android:background="@drawable/rectangle_15"
-        android:text="BACK"
-        android:textColor="@color/colorwithe"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-    >
+                <TextView
+                    android:id="@+id/phonenumber"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="200dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:text=""
+                    android:textColor="#000"
+                    app:layout_constraintBottom_toTopOf="@+id/phoneDesc"
+                    app:layout_constraintStart_toEndOf="@id/phoneIcon"
+                    app:layout_constraintTop_toTopOf="@+id/phoneIcon" />
 
+                <TextView
+                    android:id="@+id/phoneDesc"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:text="Mobile"
+                    android:textColor="#8A000000"
+                    app:layout_constraintBottom_toBottomOf="@+id/phoneIcon"
+                    app:layout_constraintStart_toEndOf="@id/phoneIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
+
+                <ImageView
+                    android:id="@+id/mailIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/ic_mail_black_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneIcon" />
+
+                <TextView
+                    android:id="@+id/email"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:text=""
+                    android:textColor="#000"
+                    app:layout_constraintBottom_toTopOf="@+id/mailDesc"
+                    app:layout_constraintStart_toEndOf="@id/mailIcon"
+                    app:layout_constraintTop_toTopOf="@+id/mailIcon" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/send"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.405" />
+
+                <TextView
+                    android:id="@+id/mailDesc"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:text="Email"
+                    android:textColor="#8A000000"
+                    app:layout_constraintBottom_toBottomOf="@+id/mailIcon"
+                    app:layout_constraintStart_toEndOf="@id/mailIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+
+                <ImageView
+                    android:id="@+id/mail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/adress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mailIcon" />
+
+
+                <TextView
+                    android:id="@+id/ville"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:text=""
+                    android:textColor="#000"
+                    app:layout_constraintBottom_toTopOf="@+id/mailDe"
+                    app:layout_constraintStart_toEndOf="@id/mail"
+                    app:layout_constraintTop_toTopOf="@+id/mail" />
+
+                <TextView
+                    android:id="@+id/mailDe"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:text="Adresse"
+                    android:textColor="#8A000000"
+                    app:layout_constraintBottom_toBottomOf="@+id/mail"
+                    app:layout_constraintStart_toEndOf="@id/mail"
+                    app:layout_constraintTop_toBottomOf="@+id/ville" />
+
+                <ImageView
+
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/find"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.663" />
+
+                <Button
+                    android:id="@+id/baack"
+                    android:layout_width="125dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/buttonstyle"
+                    android:text="Back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.97"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="MissingConstraints" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

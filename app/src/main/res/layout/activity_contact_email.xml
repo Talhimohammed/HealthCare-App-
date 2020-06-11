@@ -6,86 +6,123 @@
     android:layout_height="match_parent"
     tools:context=".contact_email">
 
-    <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="155dp"
-        android:layout_height="145dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginRight="128dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:cardElevation="20dp"
+        android:layout_marginTop="70dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image_19" />
+        app:layout_constraintVertical_bias="0.37">
 
-    <LinearLayout
-        android:layout_width="377dp"
-        android:layout_height="480dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="36dp"
-        android:orientation="vertical"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+
+                android:fontFamily="@font/artifika"
+                android:text="Subject"
+                android:textSize="19dp"
+                android:padding="10dp"></TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:layout_marginRight="10dp"
+
+                >
+                <EditText
+                    android:id="@+id/subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:layout_marginBottom="10dp"
+
+                    android:fontFamily="@font/poppinsmedium" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="299dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/artifika"
+                android:text="Message"
+                android:textSize="19dp"
+                android:padding="10dp"></TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+
+                <EditText
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="142dp"
+
+                    android:fontFamily="@font/poppinsmedium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="157dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonstyle"
+        android:fontFamily="@font/chicle"
+        android:text="Send"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.852"
+        android:textSize="19dp"/>
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Subject : "
-            android:textSize="20dp" />
+    <Button
+        android:background="@drawable/buttonstyle"
+        android:id="@+id/cancel"
+        android:layout_width="157dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.852"
+        android:text="Cancel"
+        android:fontFamily="@font/chicle"
+        android:textColor="@color/white"
+        android:textSize="19dp"/>
 
-        <EditText
-            android:id="@+id/subject"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Message :"
-            android:textSize="20dp" />
-
-
-        <EditText
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-             />
-
-        <Button
-            android:id="@+id/send"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:background="@drawable/rectangle_27"
-            android:text="SEND"
-
-            android:textColor="@color/colorwithe" />
-
-        <TextView
-            android:id="@+id/fa"
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:gravity="center"
-            android:text="" />
-
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:background="@drawable/rectangle_26"
-            android:text="CANCEL"
-            android:textColor="@color/colorwithe" />
-    </LinearLayout>
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

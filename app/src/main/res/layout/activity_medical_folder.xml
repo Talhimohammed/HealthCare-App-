@@ -57,7 +57,7 @@
         android:layout_marginEnd="206dp"
         android:layout_marginRight="206dp"
         android:layout_marginBottom="52dp"
-        android:background="@drawable/rectangle_15"
+        android:background="@drawable/bgbutton"
         android:text="Back to home"
         android:textColor="@color/colorwithe"
         app:layout_constraintBottom_toBottomOf="parent"

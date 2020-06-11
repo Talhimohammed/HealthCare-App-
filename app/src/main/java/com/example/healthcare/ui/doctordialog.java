@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +27,14 @@ public class doctordialog extends AppCompatDialogFragment {
     private TextView pnumber;
     private TextView ville;
 
+
     private String e ;
     private String n ;
     private String v;
 
 
-    public doctordialog (String email , String number , String ville){
+
+    public doctordialog (String email , String number , String ville ){
 
         this.e=email  ;
         this.n=number ;
@@ -51,6 +54,7 @@ public class doctordialog extends AppCompatDialogFragment {
         builder.setView(view);
 
         back = view.findViewById(R.id.baack);
+
         email = view.findViewById(R.id.email);
         pnumber = view.findViewById(R.id.phonenumber);
         ville = view.findViewById(R.id.ville);
@@ -61,6 +65,7 @@ public class doctordialog extends AppCompatDialogFragment {
             public void onClick(View v) {
 
                 Intent emailintent = new Intent(Intent.ACTION_SEND);
+
                 String em = email.getText().toString();
                 String[] recep = em.split(",");
 
@@ -95,8 +100,9 @@ public class doctordialog extends AppCompatDialogFragment {
         });
 
         email.setText(e);
-        pnumber.setText(n);
+        pnumber.setText("+212"+n);
         ville.setText(v);
+
 
 
         return  builder.create();

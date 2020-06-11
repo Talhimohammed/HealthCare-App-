@@ -15,7 +15,8 @@
         android:layout_marginRight="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="130dp">
+        tools:layout_editor_absoluteY="130dp"
+        tools:ignore="MissingConstraints">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="266dp"
