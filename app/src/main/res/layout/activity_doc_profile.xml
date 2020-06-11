@@ -111,11 +111,43 @@
         android:layout_marginTop="0dp">
 
         <LinearLayout
+
+            android:layout_width="389dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanovaregular"
+                android:text="Info Personel"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Edit"
+                android:textColor="#FFCF66"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="381dp"
             android:layout_height="289dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
