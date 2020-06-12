@@ -118,7 +118,7 @@ public class PatientProfile extends AppCompatActivity {
         backhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), home.class));
+                finish();
             }
         });
 

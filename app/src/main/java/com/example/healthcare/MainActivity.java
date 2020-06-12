@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(textView.getText() == "SHOW"){
-                     textView.setText("HIDE");
+                     textView.setText("");
                      password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                      password.setSelection(password.length());
                 }else {
-                    textView.setText("SHOW");
+                    textView.setText("");
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     password.setSelection(password.length());
 
