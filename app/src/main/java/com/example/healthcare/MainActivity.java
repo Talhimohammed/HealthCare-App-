@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
       TextView ForgetPass;
       private FirebaseFirestore db ;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,14 +76,15 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(textView.getText() == "SHOW"){
-                     textView.setText("");
+                if(textView.getText().equals("SHOW")){
+                     textView.setText("HIDE");
                      password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                      password.setSelection(password.length());
+
                 }else {
-                    textView.setText("");
-                    password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    password.setSelection(password.length());
+                      textView.setText("SHOW");
+                      password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                      password.setSelection(password.length());
 
                 }
             }
