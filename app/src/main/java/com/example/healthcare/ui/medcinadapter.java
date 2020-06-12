@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,28 +37,35 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class medcinadapter extends ArrayAdapter<doctors> {
+public class medcinadapter extends ArrayAdapter<doctors> implements Filterable {
 
     private static final String TAG = "medcinadapter" ;
     private Context mcontext ;
     private int nressource ;
     private FirebaseFirestore firestore ;
     private StorageReference storageReference1 ;
+    private List<doctors> doctorsList ;
+    private List<doctors> fulldoctorlist ;
 
 
     public medcinadapter(@NonNull Context context, int resource, @NonNull List<doctors> objects) {
         super(context, resource, objects);
         mcontext = context ;
         nressource = resource ;
-    }
+        this.doctorsList = objects ;
+        this.fulldoctorlist = new ArrayList<>(doctorsList);
 
+
+    }
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -212,5 +221,38 @@ public class medcinadapter extends ArrayAdapter<doctors> {
 
 
     }
+
+    @Override
+    public Filter getFilter(){
+        return Doctorfilter ;
+    }
+
+    public Filter Doctorfilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+           List<doctors> doctorsfiltred = new ArrayList<>() ;
+                 if (constraint == null || constraint.length() == 0){
+                     doctorsfiltred.addAll(fulldoctorlist);
+                 }else{
+                     String FilterPatern = constraint.toString().toLowerCase().trim();
+                        for (doctors item : fulldoctorlist){
+                             if (item.getFullname().contains(FilterPatern)){
+                                 doctorsfiltred.add(item);
+                             }
+                        }
+                 }
+                 FilterResults results = new FilterResults();
+                 results.values = doctorsfiltred ;
+                 return  results ;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            doctorsList.clear();
+            doctorsList.addAll((List)results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
 }

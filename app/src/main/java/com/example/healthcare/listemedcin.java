@@ -6,8 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ListView;
-
+import androidx.appcompat.widget.SearchView ;
 import com.example.healthcare.Model.doctors;
 import com.example.healthcare.ui.medcinadapter;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,10 +36,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class listemedcin extends AppCompatActivity {
 
     ListView listView ;
-    List<doctors> list ;
     List<doctors> doctors;
     private CircleImageView profile_img;
     StorageReference storageReferenc;
+    medcinadapter adapter ;
 
 
     @Override
@@ -42,11 +47,7 @@ public class listemedcin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listemedcin);
         listView = (ListView)findViewById(R.id.listmedcinview);
-        list = new ArrayList<>();
         FirebaseFirestore db  = FirebaseFirestore.getInstance();
-
-        list.add(new doctors("talhimohammed","talhi mohammed",991199191,"helloworld","j","k","Cardiologue"));
-        list.add(new doctors("talhimohammed","boumair hamza",991199191,"helloworld","j","k","Cardiologue"));
 
         doctors = new ArrayList<>();
         db.collection("doctors").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -59,9 +60,9 @@ public class listemedcin extends AppCompatActivity {
                      doctors med = d.toObject(doctors.class);
                      doctors.add(med);
 
-                     medcinadapter adapter = new medcinadapter(getBaseContext(),R.layout.medcinadapter, doctors);
+                       adapter = new medcinadapter(getBaseContext(),R.layout.medcinadapter, doctors);
 
-                     listView.setAdapter(adapter);
+                       listView.setAdapter(adapter);
 
                  }
 
@@ -98,10 +99,27 @@ public class listemedcin extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
-
-
-
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.doctor_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;  }
+
+
 }

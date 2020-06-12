@@ -30,4 +30,5 @@
     <string name="obese_class_i">obese class I</string>
     <string name="obese_class_ii">obese class II</string>
     <string name="obese_class_iii">obese class III</string>
+    <string name="search">Search</string>
 </resources>
