@@ -12,14 +12,15 @@
         android:layout_height="613dp"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="440dp"
         android:layout_height="101dp"
         android:background="@drawable/ic_bg_topheader"
@@ -55,17 +56,9 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-
                 app:civ_border_color="@color/imageBorderColor"
                 app:civ_border_width="2dp" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@id/searchdoctor"
-                android:src="@drawable/ic_search" />
         </RelativeLayout>
 
     </LinearLayout>

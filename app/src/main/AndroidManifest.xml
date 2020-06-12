@@ -39,7 +39,7 @@
         <activity android:name=".FichePatient" />
         <activity android:name=".MedicalFolder" />
         <activity android:name=".PatientProfile" />
-        <activity android:name=".listemedcin" />
+        <activity android:name=".listemedcin" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

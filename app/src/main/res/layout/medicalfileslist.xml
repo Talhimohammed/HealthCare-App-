@@ -57,7 +57,6 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
-                        android:text="hamza"
                         android:layout_marginRight="10dp"
                         android:textSize="20dp" />
 
@@ -158,40 +157,31 @@
             </androidx.cardview.widget.CardView>
 
             <RelativeLayout
-                android:layout_width="110dp"
-                android:layout_height="73dp"
+                android:layout_width="135dp"
+                android:layout_height="45dp"
                 android:layout_below="@+id/cv"
                 android:layout_alignLeft="@+id/cv"
                 android:layout_alignRight="@+id/cv"
-                android:layout_marginLeft="39dp"
-                android:layout_marginTop="-23dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="-19dp"
                 android:layout_marginRight="201dp"
                 android:elevation="10dp">
 
                 <Button
                     android:id="@+id/edit"
-                    android:layout_width="80dp"
-                    android:layout_height="61dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginRight="19dp"
-                    android:background="@drawable/pencil"
-                    android:fontFamily="@font/berkshire_swash"
-                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/buttonstyle"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Edit"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite3" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="110dp"
-                android:layout_height="73dp"
+                android:layout_width="135dp"
+                android:layout_height="45dp"
                 android:layout_below="@+id/cv"
                 android:layout_alignLeft="@+id/cv"
                 android:layout_alignRight="@+id/cv"
@@ -202,18 +192,11 @@
 
                 <Button
                     android:id="@+id/delete"
-                    android:layout_width="80dp"
-                    android:layout_height="61dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginRight="19dp"
-                    android:background="@drawable/criss-cross"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_19"
                     android:fontFamily="@font/berkshire_swash"
+                    android:text="Delete"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite3" />
 
