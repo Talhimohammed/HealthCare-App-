@@ -23,10 +23,8 @@ import com.example.healthcare.AddAppointement;
 import com.example.healthcare.Model.DPR;
 import com.example.healthcare.Model.doctors;
 import com.example.healthcare.R;
-import com.example.healthcare.signup;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -41,7 +39,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -124,7 +121,7 @@ public class medcinadapter extends ArrayAdapter<doctors> implements Filterable {
         moreinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doctordialog d = new doctordialog(getItem(position).getEmail().toString(),""+getItem(position).getPhone(),getItem(position).getVille().toString());
+                doctordialog d = new doctordialog(getItem(position).getEmail().toString(),""+getItem(position).getPhone(),getItem(position).getAddress()+"");
                 d.show(((FragmentActivity)v.getContext()).getSupportFragmentManager(),"Information");
             }
         });

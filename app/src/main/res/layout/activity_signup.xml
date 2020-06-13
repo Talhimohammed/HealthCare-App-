@@ -203,7 +203,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/kanit_regular"
-                android:text="Ville"
+                android:text="Doctor Address"
                 android:textColor="#BC3F4658"
                 android:textSize="18dp" />
 

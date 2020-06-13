@@ -80,31 +80,8 @@ public class signup extends AppCompatActivity {
         specialite = (Spinner)findViewById(R.id.spinner);
         ville = (EditText)findViewById(R.id.phonenumber);
         pbar = (ProgressBar)findViewById(R.id.pbar);
-
-
-
-
-
-
-
-
-
-         /*  database = FirebaseDatabase.getInstance();
-
-           users = database.getReference("Users"); */
-
-       //   databaseReference = FirebaseDatabase.getInstance().getReference("users");
-          firebaseAuth = FirebaseAuth.getInstance();
-         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-
-
-
-
-
-
-
-
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         bday.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -49,9 +49,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback, TaskLo
     private Polyline currentPolyline ;
     private LatLng d1 ;
     private LatLng d2 ;
-
     private FusedLocationProviderClient fusedLocationProviderClient ;
-
     private Location CurrentLocation ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -139,9 +137,6 @@ public class map extends AppCompatActivity implements OnMapReadyCallback, TaskLo
 
     private void FetchMyLastLocation(){
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
-
-
-
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {

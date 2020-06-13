@@ -129,7 +129,7 @@ public class DocProfile extends AppCompatActivity {
                             phone.setText("(+212)"+md.getPhone());
                             specialite.setText(md.getSpecialite());
                             fullname.setText("Dr."+md.getFullname());
-                            adressedoc.setText(md.getVille());
+                            adressedoc.setText(md.getAddress());
 
 
                         }

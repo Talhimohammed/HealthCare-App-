@@ -6,16 +6,16 @@ public class doctors {
     private int phone ;
     private String password ;
     private String birthdaydate ;
-    private String ville ;
+    private String Address;
     private String Specialite ;
 
-    public doctors(String email, String fullname, int phone, String password, String birthdaydate, String ville, String specialite) {
+    public doctors(String email, String fullname, int phone, String password, String birthdaydate, String Address, String specialite) {
         this.email = email;
         this.fullname = fullname;
         this.phone = phone;
         this.password = password;
         this.birthdaydate = birthdaydate;
-        this.ville = ville;
+        this.Address = Address;
         Specialite = specialite;
     }
     public doctors(){
@@ -62,12 +62,12 @@ public class doctors {
         this.birthdaydate = birthdaydate;
     }
 
-    public String getVille() {
-        return ville;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setAddress(String address) {
+        this.Address = address;
     }
 
     public String getSpecialite() {
