@@ -8,6 +8,7 @@ public class fiche {
     private String maladie ;
     private String taille ;
     private String postedby ;
+
     private String patient_email;
 
     public fiche(){ }

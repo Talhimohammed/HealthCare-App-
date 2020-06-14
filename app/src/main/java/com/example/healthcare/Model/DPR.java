@@ -2,8 +2,6 @@ package com.example.healthcare.Model;
 
 public class DPR {
 
-     //DPR : DOCTOR PATIENT RELATIONSHIP
-
     public String email_doctor  ;
     public String email_patient ;
     public String date_creation ;

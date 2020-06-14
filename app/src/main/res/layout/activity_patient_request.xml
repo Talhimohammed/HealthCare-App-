@@ -22,7 +22,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/acceptAll"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/stext" />
 
     <ImageView
         android:id="@+id/imageView18"
@@ -114,7 +114,7 @@
         app:srcCompat="@drawable/image_10" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/stext"
         android:layout_width="383dp"
         android:layout_height="57dp"
         android:layout_marginStart="51dp"
@@ -140,5 +140,5 @@
         android:text="Accept all"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/stext" />
 </androidx.constraintlayout.widget.ConstraintLayout>

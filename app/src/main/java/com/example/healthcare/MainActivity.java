@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
       Button signin ;
       TextView ForgetPass;
       private FirebaseFirestore db ;
+      private ProgressBar p ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         signin = (Button)findViewById(R.id.signin);
         ForgetPass = (TextView)findViewById(R.id.btnForgetPass);
         db = FirebaseFirestore.getInstance();
+        p = (ProgressBar)findViewById(R.id.progressBar2);
+        p.setVisibility(View.GONE);
 
 
         textView.setVisibility(View.GONE);
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
          signin.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(final View v) {
+                 p.setVisibility(View.VISIBLE);
                  firebaseAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                      @Override
                      public void onComplete(@NonNull Task<AuthResult> task) {
@@ -112,17 +117,17 @@ public class MainActivity extends AppCompatActivity {
                                    tohomebytype(email.getText().toString());
 
                              }else {
-
+                                 p.setVisibility(View.GONE);
                                  SweetAlertDialog dialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
                                  dialog.setTitle("Email Address Verificication");
                                  dialog.setTitleText("your email address have not been verified , please check your email for verification so that you can sign in . thank you");
                                  dialog.show();
 
-
                              }
 
 
                          }else{
+                             p.setVisibility(View.GONE);
                              SweetAlertDialog dialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE);
                              dialog.setTitle(task.getException().getMessage());
                              dialog.show();
@@ -156,16 +161,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void tohomebytype(String em){
 
-
-
         db.collection("doctors").whereEqualTo("email",em).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (queryDocumentSnapshots.size()>0) {
+
+                    p.setVisibility(View.GONE);
                     startActivity(new Intent(getBaseContext(),homedoctor.class));
-
                 }
-
 
             }
         });
@@ -174,10 +177,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (queryDocumentSnapshots.size()>0) {
+
+                    p.setVisibility(View.GONE);
                     startActivity(new Intent(getBaseContext(),home.class));
 
                 }
-
 
             }
         });
