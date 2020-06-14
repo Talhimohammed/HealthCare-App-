@@ -1,27 +1,20 @@
 package com.example.healthcare;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
@@ -33,7 +26,6 @@ import java.io.File;
 import java.io.IOException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class home extends AppCompatActivity {
 
@@ -44,7 +36,7 @@ public class home extends AppCompatActivity {
     private CardView medicalfolder;
     private FirebaseFirestore db;
     private CardView appoinement;
-    CardView logt;
+    private CardView logt;
     private CardView bmi;
 
 
@@ -60,7 +52,7 @@ public class home extends AppCompatActivity {
         profile_image = (CircularImageView) findViewById(R.id.home_profile_image);
         medicalfolder = (CardView) findViewById(R.id.medicalfolder);
         appoinement = (CardView) findViewById(R.id.Appm);
-        logt = (CardView) findViewById(R.id.logout);
+        logt = (CardView) findViewById(R.id.logoutt);
         db = FirebaseFirestore.getInstance();
         bmi = (CardView) findViewById(R.id.bmi);
 
@@ -96,7 +88,6 @@ public class home extends AppCompatActivity {
                         finish();
                         Toast.makeText(getApplicationContext(), "Logout Successfull!", Toast.LENGTH_SHORT).show();
 
-
                     }
                 });
 
@@ -109,18 +100,13 @@ public class home extends AppCompatActivity {
                     }
                 });
 
-               // dialog.show();
+                dialog.show();
 
 
             }
 
 
         });
-
-
-
-
-
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,8 +147,6 @@ public class home extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
 
 
      medicalfolder.setOnClickListener(new View.OnClickListener() {

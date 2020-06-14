@@ -289,7 +289,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/logout"
+                            android:id="@+id/logoutt"
                             android:layout_width="163dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

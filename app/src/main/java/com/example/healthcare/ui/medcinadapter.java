@@ -26,6 +26,7 @@ import com.example.healthcare.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
@@ -115,7 +116,7 @@ public class medcinadapter extends ArrayAdapter<doctors> implements Filterable {
                 dialog.show();
             }
         });
-        CHECK_IF_THE_REQUEST_WAS_ALREADY_SENT(sendR,getItem(position).getEmail(),FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        CHECK_BUTTON_STATE(sendR,getItem(position).getEmail(),FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
        //
         moreinfo.setOnClickListener(new View.OnClickListener() {
@@ -201,16 +202,29 @@ public class medcinadapter extends ArrayAdapter<doctors> implements Filterable {
         return formattedDate ;
     }
 
-    public void CHECK_IF_THE_REQUEST_WAS_ALREADY_SENT(final Button A, String Doctor_EMAIL , String Patient_Email) {
+    public void CHECK_BUTTON_STATE(final Button A, String Doctor_EMAIL , String Patient_Email) {
 
         firestore = FirebaseFirestore.getInstance();
         firestore.collection("RDP").whereEqualTo("email_doctor",Doctor_EMAIL)
-                .whereEqualTo("email_patient",Patient_Email).whereEqualTo("etat_DPR","In Progress").limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                .whereEqualTo("email_patient",Patient_Email).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (queryDocumentSnapshots.size() !=0){
-                    A.setText("the request was already sent ");
-                    A.setEnabled(false);
+                    List<DocumentSnapshot> List = queryDocumentSnapshots.getDocuments() ;
+                        DPR  dpr = null ;
+                    for(DocumentSnapshot p : List){
+                        dpr = p.toObject(DPR.class) ;
+                    }
+
+                    if (dpr.getEtat_DPR().equals("In Progress")) {
+                        A.setText("the request was already sent");
+                        A.setEnabled(false);
+                    }
+
+                    if(dpr.getEtat_DPR().equals("Accepted")) {
+                        A.setVisibility(View.GONE);
+                    }
+
 
                 }
             }

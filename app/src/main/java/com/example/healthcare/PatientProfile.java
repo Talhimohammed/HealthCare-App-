@@ -80,14 +80,6 @@ public class PatientProfile extends AppCompatActivity {
             dialog.setTitleText("Profile picture has been updated successfully");
             dialog.show();
 
-
-            //    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),pickedpic);
-            //    profile_image.setImageBitmap(bitmap);
-
-
-
-
-
         }
 
 
@@ -111,22 +103,14 @@ public class PatientProfile extends AppCompatActivity {
         backhome =findViewById(R.id.backhomepat);
         delept = (ImageView) findViewById(R.id.deletepic);
         birthdy = findViewById(R.id.birthday);
-
-
-
-
         backhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-
         FirebaseFirestore db  = FirebaseFirestore.getInstance();
-
         EmailPatient = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
 
         db.collection("patient").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
