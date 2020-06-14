@@ -37,10 +37,12 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
     private FirebaseFirestore db ;
 
     public Appointements_adapter(@NonNull Context context, int resource, @NonNull List<appointement> objects) {
+
         super(context, resource, objects);
         this.ncontext = context ;
         this.nressource = resource ;
         this.object = objects ;
+
     }
 
     @NonNull
@@ -70,14 +72,17 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
                 List<DocumentSnapshot> d = queryDocumentSnapshots.getDocuments();
 
                 if (d.size()>0) {
+
                     confirm.setVisibility(View.GONE);
                     ViewGroup.LayoutParams params = cancel.getLayoutParams();
                     params.width = 1000;
                     cancel.setLayoutParams(params);
                     c.setVisibility(View.VISIBLE);
+
                 }
             }
         });
+
 
         hour.setText(Hour);
         d.setText(date);
@@ -123,6 +128,8 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
                         dialog.dismiss();
                     }
                 });
+
+
 
                 dialog.show();
 
@@ -187,12 +194,16 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
         return convertView ;
     }
 
+
+
     public void send_cofirmation_email(String patient_email, String doctorName , String date , String time){
         String subject = "Healthcare APP : APPOINTMENT CONFIRMATION";
         String message = "Doctor "+doctorName+" just confirmed your Appointment \n Appointment details : \n Date : "+date+"\n Time :"+time+"\n"+"FOR MORE INFORMATION CHECK YOUR APP";
         MailAPI mailAPI = new MailAPI(patient_email,subject,message);
         mailAPI.execute();
     }
+
+
 
     public void  send_cancelation_email(String Email,String DoctorName){
 
