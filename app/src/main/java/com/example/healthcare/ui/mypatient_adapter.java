@@ -60,7 +60,6 @@ public class mypatient_adapter extends ArrayAdapter<DPR> {
 
         LayoutInflater inflater =  LayoutInflater.from(ncontext);
         convertView = inflater.inflate(nresource,parent,false);
-
         TextView e = (TextView)convertView.findViewById(R.id.Email);
         TextView n = (TextView)convertView.findViewById(R.id.fullname);
         ImageView profile = (ImageView)convertView.findViewById(R.id.profile_p);

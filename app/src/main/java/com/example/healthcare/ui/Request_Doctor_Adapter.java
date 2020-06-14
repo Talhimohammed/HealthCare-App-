@@ -157,9 +157,6 @@ public class Request_Doctor_Adapter extends ArrayAdapter<HashMap<String, DPR>> {
                         dialog.show();
                         Toast.makeText(getContext(),"Request is accepted",Toast.LENGTH_SHORT).show();
 
-
-
-
                     }
                 });
     }

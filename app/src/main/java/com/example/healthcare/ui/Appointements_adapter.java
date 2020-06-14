@@ -70,6 +70,10 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
                 List<DocumentSnapshot> d = queryDocumentSnapshots.getDocuments();
 
                 if (d.size()>0) {
+                    confirm.setVisibility(View.GONE);
+                    ViewGroup.LayoutParams params = cancel.getLayoutParams();
+                    params.width = 1000;
+                    cancel.setLayoutParams(params);
                     c.setVisibility(View.VISIBLE);
                 }
             }
@@ -198,4 +202,6 @@ public class Appointements_adapter extends ArrayAdapter<appointement> {
         mailAPI.execute();
 
     }
+
+
 }

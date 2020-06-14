@@ -225,7 +225,6 @@ public class medcinadapter extends ArrayAdapter<doctors> implements Filterable {
                         A.setVisibility(View.GONE);
                     }
 
-
                 }
             }
         });
