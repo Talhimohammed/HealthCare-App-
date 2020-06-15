@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
       TextView regis ;
       Button signin ;
       TextView ForgetPass;
-      private FirebaseFirestore db ;
+      public FirebaseFirestore db ;
       private ProgressBar p ;
+      public FirebaseAuth firebaseAuth = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
 
-        final FirebaseAuth firebaseAuth ;
+
 
 
         password.addTextChangedListener(new TextWatcher() {
